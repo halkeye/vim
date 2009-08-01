@@ -250,13 +250,20 @@ nmap <Leader>px :%!xmllint --format -<CR>
 " \ "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
 " \ --noout -<CR>
 
+"""""
+""" taglist
+""""
+set tags=~/.vim/mytags/ecmproject
+
+
+""""""""
+"""" Shortcuts 
+""""""""
+nnoremap <silent> `1 :NERDTreeToggle<CR>
+nnoremap <silent> `2 :TlistToggle<CR>
 
 let g:Perl_AuthorName      = 'Gavin Mogan'
 let g:Perl_AuthorRef       = 'Gavin'
 let g:Perl_Email           = 'gavin@kodekoan.com'
 let g:Perl_Company         = 'KodeKoan'
 let g:Perl_PerlTags        = 'enabled'
-
-
-set laststatus=2
-set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
