@@ -1,8 +1,13 @@
 " Automatically reload .vimrc when changing
 autocmd! bufwritepost .vimrc source %
 
-colorscheme default
-syntax on
+let g:Perl_AuthorName      = 'Gavin Mogan'
+let g:Perl_AuthorRef       = 'Gavinm'
+let g:Perl_Email           = 'gavinm@airg.com'
+let g:Perl_Company         = 'airG'
+let g:Perl_PerlTags        = 'enabled'
+
+"colorscheme default
 set background=dark
 filetype plugin on
 
@@ -10,11 +15,10 @@ filetype plugin on
 set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endi
 
-
-set terse
 "	because we prefer terse error messages,
-set redraw optimize
+set terse
 "	keep the screen tidy
+set redraw optimize
 " use spaces rather then tabs, with a width of 2
 set tabstop=4
 set shiftwidth=4
@@ -93,6 +97,12 @@ au BufNewFile,BufRead  svn-commit.* setf svn
 au FileType svn map <Leader>sd :SVNCommitDiff<CR>
 
 map <Leader>dd :SVNVimDiff<CR>
+
+"" Embperl stuff
+augroup filetypedetect
+autocmd! BufNewFile,BufRead *.epl,*.xhtml setf embperl
+augroup END
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
@@ -199,16 +209,21 @@ set nowrap
    """"""""""""""""""""""""""""""
    " Perl Section
    """"""""""""""""""""""""""""""
-   autocmd FileType perl compiler perl
-   "autocmd FileType perl map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
-   " Adding the following to your vimrc file will make POD documentation in Perl modules easier to read:
-   autocmd FileType perl let perl_include_pod=1
-   autocmd FileType perl let g:perldoc_program='/usr/bin/perldoc'
-   autocmd FileType perl set comments=:# cinkeys=0{,0},0),:,!^F,o,O,e
+"   augroup perl
+       autocmd BufNew,BufRead  *.pl,*.pm   set filetype=perl
 
-"   autocmd FileType perl nmap K Perldoc();
-"  autocmd FileType perl map    <buffer>  <silent>  <Leader>h     <Esc>:call Perldoc('<args>')<CR>
-"  autocmd FileType perl map    <buffer>  <silent>  <Leader>h     <Esc>:Perldoc<CR>
+       autocmd FileType perl compiler perl
+       "autocmd FileType perl map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
+       " Adding the following to your vimrc file will make POD documentation in Perl modules easier to read:
+       autocmd FileType perl let perl_include_pod=1
+       autocmd FileType perl let g:perldoc_program='/usr/bin/perldoc'
+       autocmd FileType perl set comments=:# cinkeys=0{,0},0),:,!^F,o,O,e
+
+       " Fix cindent commenting style to support comments on same line
+"       autocmd BufNew,BufRead *.p[lm] perl set cindent
+"       autocmd BufNew,BufRead *.p[lm] perl set set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
+"  augroup END
+
 
    """"""""""""""""""""""""""""""
    " JavaScript section
@@ -250,11 +265,11 @@ nmap <Leader>px :%!xmllint --format -<CR>
 " \ "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
 " \ --noout -<CR>
 
-"""""
-""" taglist
-""""
-set tags=~/.vim/mytags/ecmproject
 
+"colorscheme rastafari
+
+set laststatus=2 
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
 
 """"""""
 """" Shortcuts 
@@ -262,8 +277,3 @@ set tags=~/.vim/mytags/ecmproject
 nnoremap <silent> `1 :NERDTreeToggle<CR>
 nnoremap <silent> `2 :TlistToggle<CR>
 
-let g:Perl_AuthorName      = 'Gavin Mogan'
-let g:Perl_AuthorRef       = 'Gavin'
-let g:Perl_Email           = 'gavin@kodekoan.com'
-let g:Perl_Company         = 'KodeKoan'
-let g:Perl_PerlTags        = 'enabled'
