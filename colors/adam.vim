@@ -7,6 +7,8 @@
 " 
 " Maintainer:	Adam Krouskop
 " Last Change:	2003 Jul 3
+
+
 set background=light
 hi clear
 if exists("syntax_on")
