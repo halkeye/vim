@@ -295,8 +295,9 @@ map Q gq
 
 """ Tab stuff
 "Tab configuration
-map <leader>tn :tabnew %<cr>
-map <leader>te :tabedit
+"map <leader>tn :tabnew %<cr>
+map <leader>te :tabedit 
+map <leader>tt :tabnext<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
@@ -305,7 +306,7 @@ nmap <C-n> :tabnext<cr>
 nmap <C-t> :tabnew<cr>
 try
   set switchbuf=usetab
-  set stal=2
+  set stal=1
 catch
 endtry
 
@@ -346,7 +347,10 @@ autocmd BufRead  *.install set filetype=php
 
 function! FileTypePHP()
     compiler php
-    map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
+"    map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
+    set makeprg=php\ -l\ %
+    set errorformat=%m\ in\ %f\ on\ line\ %l
+    map <Leader>rr :make %<cr>
 endfunction
 
 autocmd FileType perl call FileTypePerl()
