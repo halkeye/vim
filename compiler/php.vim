@@ -15,13 +15,11 @@ set cpo&vim
 " Running :make will run php4's lint filter over the currently
 " opened file.
 " your PHP cli (or cgi) executable may be different
-set makeprg=php\ \-\l\ %\\\|\ grep\ '\ on\ line\ '
+set makeprg=php4\ \-\l\ %\\\|\ grep\ '</b>\ on\ line\ <b>'
 
 " Error format seems to change between versions, if this script
 " doesn't seem to work, see if the format is incorrect
-" Parse error: syntax error, unexpected T_VARIABLE in apps/default/modules/promotionManager/actions/actions.class.php on line 151
-
-set errorformat=%m\ in\ %f\ on\ line\ %l
+set errorformat=<b>%*[^<]</b>:\ \ %m\ in\ <b>%f</b>\ on\ line\ <b>%l</b><br\ />
 
 
 let &cpo = s:cpo_save

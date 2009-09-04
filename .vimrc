@@ -211,41 +211,6 @@ set nowrap
 
 
    """"""""""""""""""""""""""""""
-   " Ruby & PHP section
-   """"""""""""""""""""""""""""""
-   augroup php
-       autocmd BufRead  *.module set filetype=php
-       autocmd BufRead  *.inc set filetype=php
-       autocmd BufRead  *.install set filetype=php
-
-       autocmd FileType ruby map <buffer> <leader><space> :w!<cr>:!ruby %<cr>
-       autocmd FileType php compiler php
-       autocmd FileType php map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
-   augroup END
-   
-   """"""""""""""""""""""""""""""
-   " Perl Section
-   """"""""""""""""""""""""""""""
-"   augroup perl
-       autocmd BufNew,BufRead  *.pl,*.pm   set filetype=perl
-
-       autocmd FileType perl compiler perl
-       "autocmd FileType perl map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
-       " Adding the following to your vimrc file will make POD documentation in Perl modules easier to read:
-       autocmd FileType perl let perl_include_pod=1
-       autocmd FileType perl let g:perldoc_program='/usr/bin/perldoc'
-       autocmd FileType perl set comments=:# cinkeys=0{,0},0),:,!^F,o,O,e
-       autocmd FileType perl set iskeyword+=_
-       " Stop the annoying behavior of leaving comments on far left
-       set fo+=r
-
-       " Fix cindent commenting style to support comments on same line
-"       autocmd BufNew,BufRead *.p[lm] perl set cindent
-"       autocmd BufNew,BufRead *.p[lm] perl set set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
-"  augroup END
-
-
-   """"""""""""""""""""""""""""""
    " JavaScript section
    """""""""""""""""""""""""""""""
 "   function! JavaScriptFold()
@@ -328,3 +293,61 @@ nnoremap <silent> `2 :TlistToggle<CR>
 map Q gq
 
 
+""" Tab stuff
+"Tab configuration
+map <leader>tn :tabnew %<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+nmap <C-p> :tabprevious<cr>
+nmap <C-n> :tabnext<cr>
+nmap <C-t> :tabnew<cr>
+try
+  set switchbuf=usetab
+  set stal=2
+catch
+endtry
+
+"Bash like
+cnoremap <C-A>    <Home>
+cnoremap <C-E>    <End>
+cnoremap <C-K>    <C-U>
+
+""""""""""""""""""""""""""""""
+" Perl Section
+""""""""""""""""""""""""""""""
+autocmd BufNew,BufRead  *.pl,*.pm   set filetype=perl
+
+function! FileTypePerl()
+    compiler perl
+    " map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
+    " Adding the following to your vimrc file will make POD documentation in Perl modules easier to read:
+    let perl_include_pod=1
+    let g:perldoc_program='/usr/bin/perldoc'
+    set comments=:# cinkeys=0{,0},0),:,!^F,o,O,e
+    set iskeyword+=_
+
+    " Stop the annoying behavior of leaving comments on far left
+    set fo+=r
+
+    " Fix cindent commenting style to support comments on same line
+    set cindent
+    set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
+endfunction
+
+""""""""""""""""""""""""""""""
+" Ruby & PHP section
+""""""""""""""""""""""""""""""
+autocmd BufRead  *.module set filetype=php
+autocmd BufRead  *.inc set filetype=php
+autocmd BufRead  *.install set filetype=php
+
+
+function! FileTypePHP()
+    compiler php
+    map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
+endfunction
+
+autocmd FileType perl call FileTypePerl()
+autocmd FileType php call FileTypePHP()
