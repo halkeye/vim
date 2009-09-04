@@ -1,30 +1,13 @@
 " Automatically reload .vimrc when changing
 autocmd! bufwritepost .vimrc source %
 
+let g:Perl_AuthorName      = 'Gavin Mogan'
+let g:Perl_AuthorRef       = 'Gavinm'
+let g:Perl_Email           = 'gavinm@airg.com'
+let g:Perl_Company         = 'airG'
 let g:Perl_PerlTags        = 'enabled'
 
-function! LoadWorkAuthor()
-    let g:Perl_AuthorName      = 'Gavin Mogan'
-    let g:Perl_AuthorRef       = 'Gavinm'
-    let g:Perl_Email           = 'gavinm@airg.com'
-    let g:Perl_Company         = 'airG'
-endfunction
-
-function! LoadHomeAuthor()
-    let g:Perl_AuthorName      = 'Gavin Mogan'
-    let g:Perl_AuthorRef       = 'Gavin'
-    let g:Perl_Email           = 'gavin@kodekoan.com'
-    let g:Perl_Company         = 'KodeKoan'
-endfunction
-
-if $USER != 'halkeye' 
-    call LoadWorkAuthor()
-else
-    call LoadHomeAuthor()
-endif
-
 "colorscheme default
-syntax on
 set background=dark
 filetype plugin on
 
@@ -117,7 +100,7 @@ map <Leader>dd :SVNVimDiff<CR>
 
 "" Embperl stuff
 augroup filetypedetect
-autocmd! BufNewFile,BufRead *.epl,*.xhtml,*.wml setf embperl
+autocmd! BufNewFile,BufRead *.epl,*.xhtml setf embperl
 augroup END
 
 
@@ -235,9 +218,6 @@ set nowrap
        autocmd FileType perl let perl_include_pod=1
        autocmd FileType perl let g:perldoc_program='/usr/bin/perldoc'
        autocmd FileType perl set comments=:# cinkeys=0{,0},0),:,!^F,o,O,e
-       autocmd FileType perl set iskeyword+=_
-       " Stop the annoying behavior of leaving comments on far left
-       set fo+=r
 
        " Fix cindent commenting style to support comments on same line
 "       autocmd BufNew,BufRead *.p[lm] perl set cindent
@@ -291,40 +271,9 @@ nmap <Leader>px :%!xmllint --format -<CR>
 set laststatus=2 
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
 
-"""""
-""" taglist
-""""
-set tags=~/.vim/mytags/WAP
-
-
-"" use mouse for navigation
-set mouse=n
-
-"""" <Leader>dd = Data::Dumper::Dumper($1);
-function! GetVisual() range
-    let reg_save = getreg('"')
-    let regtype_save = getregtype('"')
-    let cb_save = &clipboard
-    set clipboard&
-    normal! ""gvy
-    let selection = getreg('"')
-    call setreg('"', reg_save, regtype_save)
-    let &clipboard = cb_save
-    return selection
-endfunction
-
-"vmap <leader>d :%s/<c-r>=GetVisual()<cr>/Data::Dumper::Dumper(\1)/
-vnoremap <leader>dd "hy:%s/<C-r>h/Data::Dumper::Dumper(<C-r>h)/<CR>
-nnoremap <leader>f ma[[k"xyy`a:echo @x<CR>
-
-
 """"""""
 """" Shortcuts 
 """"""""
 nnoremap <silent> `1 :NERDTreeToggle<CR>
 nnoremap <silent> `2 :TlistToggle<CR>
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 
