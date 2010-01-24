@@ -253,8 +253,8 @@ nmap <Leader>px :%!xmllint --format -<CR>
 
 "colorscheme rastafari
 
-set laststatus=2 
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
+"set laststatus=2 
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
 
 """""
 """ taglist
@@ -301,9 +301,6 @@ map <leader>tt :tabnext<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
-nmap <C-p> :tabprevious<cr>
-nmap <C-n> :tabnext<cr>
-nmap <C-t> :tabnew<cr>
 set stal=1
 "try
 "  set switchbuf=usetab
@@ -348,6 +345,10 @@ cnoremap <C-A>    <Home>
 cnoremap <C-E>    <End>
 cnoremap <C-K>    <C-U>
 
+
+"" \w will switch windows and resize
+noremap <Leader>w <C-W><C-W>:res<cr>
+
 """"""""""""""""""""""""""""""
 " Perl Section
 """"""""""""""""""""""""""""""
@@ -388,3 +389,5 @@ endfunction
 
 autocmd FileType perl call FileTypePerl()
 autocmd FileType php call FileTypePHP()
+    
+set iskeyword-=.
