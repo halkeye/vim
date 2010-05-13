@@ -1,0 +1,1 @@
+../_addons/tail-bundle/macros/gvim-tail.zsh
