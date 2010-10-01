@@ -369,6 +369,16 @@ function! FileTypePerl()
     " Fix cindent commenting style to support comments on same line
     set cindent
     set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
+
+    " only work in 'normal' mode
+    nnoremap <Leader>qt  :%!perltidy -q<cr>
+    " only work in 'visual' mode
+    vnoremap <Leader>qt  :!perltidy  -q<cr>
+endfunction
+
+function! FileTypeJS()
+    "compiler javascript
+    set iskeyword-=.
 endfunction
 
 """"""""""""""""""""""""""""""
@@ -388,6 +398,7 @@ function! FileTypePHP()
 endfunction
 
 autocmd FileType perl call FileTypePerl()
+autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
-    
+let g:ShowFuncSortType = "no"
 set iskeyword-=.

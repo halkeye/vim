@@ -1,0 +1,16 @@
+# This is a simple of a .perltidyrc configuration file
+-se    # errors to standard error output
+-w     # show all warnings
+-bl    # braces on new lines
+-pt=0  # parens not tight at all
+-bt=0  # braces not tight
+-sbt=0 # square brackets not tight
+-l=100  # maxium line length
+-ole=unix # line endings
+--nospace-for-semicolon
+--nospace-keyword-paren
+-sbt=2 # square bracket tightness
+-pt=2 # paren tightness
+-bt=2 # brace tightness
+--noopening-anonymous-sub-brace-on-new-line
+--want-break-after="|| &&"
