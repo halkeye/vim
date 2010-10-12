@@ -1,1 +1,0 @@
-../_addons/tail-bundle/doc/tail.txt

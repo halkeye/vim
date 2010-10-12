@@ -1,1 +1,0 @@
-../_addons/bufexplorer/plugin/bufexplorer.vim

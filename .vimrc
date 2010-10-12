@@ -1,3 +1,12 @@
+filetype off
+call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
+
+
+
+" turn off vi compat
+set nocompatible
+
 " Automatically reload .vimrc when changing
 autocmd! bufwritepost .vimrc source %
 
