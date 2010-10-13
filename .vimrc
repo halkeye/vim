@@ -1,5 +1,6 @@
 filetype off
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 filetype plugin indent on
 
 
@@ -411,3 +412,7 @@ autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
 let g:ShowFuncSortType = "no"
 set iskeyword-=.
+
+
+:map <Leader>s :tabnew<CR>:Scratch<CR>
+
