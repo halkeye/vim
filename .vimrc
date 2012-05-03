@@ -27,7 +27,7 @@ function! LoadHomeAuthor()
     let g:Perl_Company         = 'KodeKoan'
 endfunction
 
-if $USER != 'halkeye' 
+if $USER != 'halkeye'
     call LoadWorkAuthor()
 else
     call LoadHomeAuthor()
@@ -103,7 +103,7 @@ autocmd BufNewFile *.yml set shiftwidth=2
 "autocmd BufNewFile *template* set shiftwidth=2
 
 " Toggle Numbers
-map <F12> :set number!<CR> 
+map <F12> :set number!<CR>
 " Paste
 "map <F11> :set paste!<bar>set paste?<CR>
 " Wrap
@@ -256,15 +256,15 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 au BufNewFile,BufRead *.docbook setf docbk
 nmap <Leader>px :%!xmllint --format -<CR>
 "nmap <Leader>l <Leader>cd:%w !xmllint --valid --noout -<CR>
-"nmap <Leader>d4 :%w !xmllint --dtdvalid 
+"nmap <Leader>d4 :%w !xmllint --dtdvalid
 " \ "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
 " \ --noout -<CR>
 
 
 "colorscheme rastafari
 
-"set laststatus=2 
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
+"set laststatus=2
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 """""
 """ taglist
@@ -294,7 +294,7 @@ nnoremap <leader>f ma[[k"xyy`a:echo @x<CR>
 
 
 """"""""
-"""" Shortcuts 
+"""" Shortcuts
 """"""""
 nnoremap <silent> `1 :NERDTreeToggle<CR>
 nnoremap <silent> `2 :TlistToggle<CR>
@@ -313,6 +313,44 @@ map <leader>tm :tabmove
 map <leader>tn :tabnew
 
 set stal=1
+"try
+"  set switchbuf=usetab
+"  set stal=1
+"catch
+"endtry
+
+"
+" Configure tabs for the console version
+"
+"function MyTabLine()
+"        let s = ''
+"        let t = tabpagenr()
+"        let i = 1
+"        while i <= tabpagenr('$')
+"                let buflist = tabpagebuflist(i)
+"                let winnr = tabpagewinnr(i)
+"                let s .= '%' . i . 'T'
+"                let s .= (i == t ? '%1*' : '%2*')
+"                let s .= ' '
+"                let s .= i . ':'
+"                let s .= winnr . '/' . tabpagewinnr(i,'$')
+"                let s .= ' %*'
+"                let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+"                let file = bufname(buflist[winnr - 1])
+"                let file = fnamemodify(file, ':p:t')
+"                if file == ''
+"                        let file = '[No Name]'
+"                endif
+"                let s .= file
+"                let i = i + 1
+"        endwhile
+"        let s .= '%T%#TabLineFill#%='
+"        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+"        return s
+"endfunction
+"set tabline=%!MyTabLine()
+
+>>>>>>> 9476c7e051551c381253ee9d50655c36256bd03a
 
 "Bash like
 cnoremap <C-A>    <Home>
@@ -374,14 +412,24 @@ function! FileTypePHP()
     map <Leader>rr :make %<cr>
 endfunction
 
+function! FileTypeRuby()
+    compiler ruby
+    set makeprg=ruby\ -c\ %
+"    set errorformat=%m\ in\ %f\ on\ line\ %l
+"    map <Leader>rr :make %<cr>
+    map <Leader>rr :w<CR>:exe ":!ruby " . getreg("%") . "" <CR>
+endfunction
+
 autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
+autocmd FileType ruby call FileTypeRuby()
 let g:ShowFuncSortType = "no"
 set iskeyword-=.
 
 
 map <Leader>s :tabnew<CR>:Scratch<CR>
+<<<<<<< HEAD
 
 let g:ctags_statusline=1
 let g:ctags_title=0
@@ -395,4 +443,10 @@ let tlist_perl_settings  = 'perl;c:constants;l:labels;p:package;s:subroutines;d:
 
 " if $TERM=screen then
 set ttymouse=xterm
+nmap <silent> <Leader>tt :CommandT<CR>
 
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
+" One way to make sure to remove all training whitespace in a file is to set
+" an autocmd in your .vimrc file. Everytime the user issue a :w command, Vim
+" will automatically remove all trailing whitespace before saving.
+autocmd BufWritePre *.pp :%s/\s\+$//e
