@@ -350,8 +350,6 @@ set stal=1
 "endfunction
 "set tabline=%!MyTabLine()
 
->>>>>>> 9476c7e051551c381253ee9d50655c36256bd03a
-
 "Bash like
 cnoremap <C-A>    <Home>
 cnoremap <C-E>    <End>
@@ -429,7 +427,6 @@ set iskeyword-=.
 
 
 map <Leader>s :tabnew<CR>:Scratch<CR>
-<<<<<<< HEAD
 
 let g:ctags_statusline=1
 let g:ctags_title=0
