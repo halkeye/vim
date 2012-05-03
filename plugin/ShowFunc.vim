@@ -158,8 +158,7 @@ function! s:CtagsTest(path)
     endwhile
     if l:rpath == "fail"
       if !has("gui_running") || has("win32")
-        echo "ShowFunc Error: Ctags binary not found.\n".
-          \  "Please set g:showfuncctagsbin in your .vimrc.\n" 
+"        echo "ShowFunc Error: Ctags binary not found.\nPlease set g:showfuncctagsbin in your .vimrc.\n" 
       endif
     endif
   else
@@ -168,8 +167,7 @@ function! s:CtagsTest(path)
       let l:rpath = s:CtagsVersionTest(a:path)
     else
       if ( !has("gui_running") || has("win32") )
-        echo "ShowFunc Error: Ctags binary not found.\n".
-          \  "Your g:showfuncctagsbin may be set incorrectly.\n"
+"        echo "ShowFunc Error: Ctags binary not found.\nYour g:showfuncctagsbin may be set incorrectly.\n"
       endif
       let g:loaded_showfunc = 0
       let l:rpath = "fail"
@@ -292,7 +290,7 @@ function! s:ShowFuncFolds()
 endfunction
 
 " Set FoldText to filename and tag count.
-function! ShowFuncFoldText()
+function! s:ShowFuncFoldText()
   let l:line = ""
   let l:textwidth = &textwidth - 20
   let l:line = getline(v:foldstart)
@@ -436,7 +434,6 @@ endif
 " If a suitable ctags binary cannot be found, remove autocommands,  clear 
 " functions and exit script.
 if g:showfuncctagsbin == "fail" 
-  echo "ShowFunc exting.  (Cleaning up functions)"
   let g:loaded_showfunc = 0
   augroup! showfunc_autocmd
   delfunction <SID>ChangeScanType

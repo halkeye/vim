@@ -83,7 +83,7 @@ set dictionary-=~/symvimny/funclist.txt dictionary+=~/symvimny/funclist.txt
 set complete-=k complete+=k
 
 " Remap the tab key to select action with InsertTabWrapper
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 "set ignorecase                  " caseinsensitive searches-
 set showmode                    " always show command or insert mode-
@@ -269,7 +269,7 @@ nmap <Leader>px :%!xmllint --format -<CR>
 """""
 """ taglist
 """"
-set tags=~/.vim/mytags/WAP
+"set tags=~/.vim/mytags/WAP
 
 
 "" use mouse for navigation
@@ -307,54 +307,17 @@ map Q gq
 "Tab configuration
 "map <leader>tn :tabnew %<cr>
 map <leader>te :tabedit 
-map <leader>tt :tabnext<cr>
+map <leader>tt :TlistToggle<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+map <leader>tn :tabnew
 
 set stal=1
-"try
-"  set switchbuf=usetab
-"  set stal=1
-"catch
-"endtry
-
-" 
-" Configure tabs for the console version
-"
-"function MyTabLine()
-"        let s = ''
-"        let t = tabpagenr()
-"        let i = 1
-"        while i <= tabpagenr('$')
-"                let buflist = tabpagebuflist(i)
-"                let winnr = tabpagewinnr(i)
-"                let s .= '%' . i . 'T'
-"                let s .= (i == t ? '%1*' : '%2*')
-"                let s .= ' '
-"                let s .= i . ':'
-"                let s .= winnr . '/' . tabpagewinnr(i,'$')
-"                let s .= ' %*'
-"                let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-"                let file = bufname(buflist[winnr - 1])
-"                let file = fnamemodify(file, ':p:t')
-"                if file == ''
-"                        let file = '[No Name]'
-"                endif
-"                let s .= file
-"                let i = i + 1
-"        endwhile
-"        let s .= '%T%#TabLineFill#%='
-"        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-"        return s
-"endfunction
-"set tabline=%!MyTabLine()
-
 
 "Bash like
 cnoremap <C-A>    <Home>
 cnoremap <C-E>    <End>
 cnoremap <C-K>    <C-U>
-
 
 "" \w will switch windows and resize
 noremap <Leader>w <C-W><C-W>:res<cr>
@@ -363,6 +326,10 @@ noremap <Leader>w <C-W><C-W>:res<cr>
 " Perl Section
 """"""""""""""""""""""""""""""
 autocmd BufNew,BufRead  *.pl,*.pm   set filetype=perl
+autocmd BufRead            *.pod  set filetype=perl
+autocmd BufNewFile         *.pod  set filetype=perl
+"| call Perl_CommentTemplates("pod")
+autocmd BufNewFile,BufRead *.t    set filetype=perl
 
 function! FileTypePerl()
     compiler perl
@@ -414,5 +381,18 @@ let g:ShowFuncSortType = "no"
 set iskeyword-=.
 
 
-:map <Leader>s :tabnew<CR>:Scratch<CR>
+map <Leader>s :tabnew<CR>:Scratch<CR>
+
+let g:ctags_statusline=1
+let g:ctags_title=0
+let g:generate_tags=1 
+let g:ctags_regenerate=1
+
+noremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
+inoremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
+
+let tlist_perl_settings  = 'perl;c:constants;l:labels;p:package;s:subroutines;d:POD'
+
+" if $TERM=screen then
+set ttymouse=xterm
 
