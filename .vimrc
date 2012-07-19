@@ -307,9 +307,10 @@ map Q gq
 "Tab configuration
 "map <leader>tn :tabnew %<cr>
 map <leader>te :tabedit 
-map <leader>tt :tabnext<cr>
+map <leader>tt :TlistToggle<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
+map <leader>tm :tabmove
+map <leader>tn :tabnew
 
 set stal=1
 "try
@@ -349,12 +350,10 @@ set stal=1
 "endfunction
 "set tabline=%!MyTabLine()
 
-
 "Bash like
 cnoremap <C-A>    <Home>
 cnoremap <C-E>    <End>
 cnoremap <C-K>    <C-U>
-
 
 "" \w will switch windows and resize
 noremap <Leader>w <C-W><C-W>:res<cr>
@@ -363,6 +362,10 @@ noremap <Leader>w <C-W><C-W>:res<cr>
 " Perl Section
 """"""""""""""""""""""""""""""
 autocmd BufNew,BufRead  *.pl,*.pm   set filetype=perl
+autocmd BufRead            *.pod  set filetype=perl
+autocmd BufNewFile         *.pod  set filetype=perl
+"| call Perl_CommentTemplates("pod")
+autocmd BufNewFile,BufRead *.t    set filetype=perl
 
 function! FileTypePerl()
     compiler perl
@@ -389,6 +392,7 @@ endfunction
 function! FileTypeJS()
     "compiler javascript
     set iskeyword-=.
+    map <Leader>rr :w<CR>:exe ":!node " . getreg("%") . "" <CR>
 endfunction
 
 """"""""""""""""""""""""""""""
@@ -424,6 +428,19 @@ set iskeyword-=.
 
 
 map <Leader>s :tabnew<CR>:Scratch<CR>
+
+let g:ctags_statusline=1
+let g:ctags_title=0
+let g:generate_tags=1 
+let g:ctags_regenerate=1
+
+noremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
+inoremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
+
+let tlist_perl_settings  = 'perl;c:constants;l:labels;p:package;s:subroutines;d:POD'
+
+" if $TERM=screen then
+set ttymouse=xterm
 nmap <silent> <Leader>tt :CommandT<CR>
 
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
@@ -432,5 +449,4 @@ nmap <silent> <Leader>tt :CommandT<CR>
 " will automatically remove all trailing whitespace before saving.
 autocmd BufWritePre *.pp :%s/\s\+$//e
 
-" if $TERM=screen then
-set ttymouse=xterm
+set nonumber
