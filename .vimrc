@@ -392,6 +392,7 @@ endfunction
 function! FileTypeJS()
     "compiler javascript
     set iskeyword-=.
+    map <Leader>rr :w<CR>:exe ":!node " . getreg("%") . "" <CR>
 endfunction
 
 """"""""""""""""""""""""""""""
@@ -447,3 +448,5 @@ nmap <silent> <Leader>tt :CommandT<CR>
 " an autocmd in your .vimrc file. Everytime the user issue a :w command, Vim
 " will automatically remove all trailing whitespace before saving.
 autocmd BufWritePre *.pp :%s/\s\+$//e
+
+set nonumber
