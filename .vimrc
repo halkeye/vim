@@ -389,6 +389,7 @@ function! FileTypePerl()
     vnoremap <Leader>qt  :!perltidy  -q<cr>
 endfunction
 
+autocmd BufRead  *.json set filetype=json
 function! FileTypeJS()
     "compiler javascript
     set iskeyword-=.
@@ -396,7 +397,7 @@ function! FileTypeJS()
 endfunction
 
 """"""""""""""""""""""""""""""
-" Ruby & PHP section
+" PHP section
 """"""""""""""""""""""""""""""
 autocmd BufRead  *.module set filetype=php
 autocmd BufRead  *.inc set filetype=php
@@ -411,8 +412,15 @@ function! FileTypePHP()
     map <Leader>rr :make %<cr>
 endfunction
 
+""""""""""""""""""""""""""""""
+" Ruby section
+""""""""""""""""""""""""""""""
+autocmd BufRead Vagrantfile set filetype=ruby
+
 function! FileTypeRuby()
     compiler ruby
+    set tabstop=2
+    set shiftwidth=2
     set makeprg=ruby\ -c\ %
 "    set errorformat=%m\ in\ %f\ on\ line\ %l
 "    map <Leader>rr :make %<cr>
@@ -450,3 +458,17 @@ nmap <silent> <Leader>tt :CommandT<CR>
 autocmd BufWritePre *.pp :%s/\s\+$//e
 
 set nonumber
+
+nmap <silent> <Leader>nt :NERDTreeToggle<CR>
+nmap <Leader>p :set paste!<CR>
+
+" I hate folds
+set nofoldenable
+
+" https://github.com/altercation/vim-colors-solarized
+colorscheme solarized
+if has('gui_running')
+    let g:solarized_termtrans=1
+endif
+
+
