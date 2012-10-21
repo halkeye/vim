@@ -1269,6 +1269,7 @@ function! Perl_CommentTemplates (arg)
     "----------------------------------------------------------------------
     " 
     call Perl_SubstituteTag( pos1, pos2, '|FILENAME|',        expand("%:t")          )
+    call Perl_SubstituteTag( pos1, pos2, '|FILE|',            expand("%t")          )
     call Perl_SubstituteTag( pos1, pos2, '|DATE|',            strftime("%x %X %Z")   )
     call Perl_SubstituteTag( pos1, pos2, '|TIME|',            strftime("%X")         )
     call Perl_SubstituteTag( pos1, pos2, '|YEAR|',            strftime("%Y")         )
@@ -1298,7 +1299,7 @@ function! Perl_CommentTemplates (arg)
         :startinsert
       endif
     endif
-		:set modified
+		":set modified
   else
     echohl WarningMsg | echo 'template file '.templatefile.' does not exist or is not readable'| echohl None
   endif
@@ -2883,16 +2884,20 @@ endif
 "------------------------------------------------------------------------------
 if has("autocmd")
 	
-	autocmd BufNewFile  *.pl  call Perl_CommentTemplates('header')	|	:w!
-	autocmd BufNewFile  *.pm  call Perl_CommentTemplates('module')	|	:w!
-	autocmd BufNewFile  *.t   call Perl_CommentTemplates('test')  	|	:w!
+	autocmd BufNewFile  *.pl  call Perl_CommentTemplates('header')
+  "|	:w!
+	autocmd BufNewFile  *.pm  call Perl_CommentTemplates('module')
+  "|	:w!
+	autocmd BufNewFile  *.t   call Perl_CommentTemplates('test')
+  "|	:w!
   "
-  autocmd BufRead            *.pod  set filetype=perl
-  autocmd BufNewFile         *.pod  set filetype=perl | call Perl_CommentTemplates("pod")
-  autocmd BufNewFile,BufRead *.t    set filetype=perl
+  "autocmd BufRead            *.pod  set filetype=perl
+  "autocmd BufNewFile         *.pod  set filetype=perl
+  "| call Perl_CommentTemplates("pod")
+  "autocmd BufNewFile,BufRead *.t    set filetype=perl
   "
   " Wrap error descriptions in the quickfix window.
-  autocmd BufReadPost quickfix  setlocal wrap | setlocal linebreak 
+  "autocmd BufReadPost quickfix  setlocal wrap | setlocal linebreak 
   "
 endif
 "

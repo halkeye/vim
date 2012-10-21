@@ -27,7 +27,7 @@ function! LoadHomeAuthor()
     let g:Perl_Company         = 'KodeKoan'
 endfunction
 
-if $USER != 'halkeye' 
+if $USER != 'halkeye'
     call LoadWorkAuthor()
 else
     call LoadHomeAuthor()
@@ -83,7 +83,7 @@ set dictionary-=~/symvimny/funclist.txt dictionary+=~/symvimny/funclist.txt
 set complete-=k complete+=k
 
 " Remap the tab key to select action with InsertTabWrapper
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 "set ignorecase                  " caseinsensitive searches-
 set showmode                    " always show command or insert mode-
@@ -103,7 +103,7 @@ autocmd BufNewFile *.yml set shiftwidth=2
 "autocmd BufNewFile *template* set shiftwidth=2
 
 " Toggle Numbers
-map <F12> :set number!<CR> 
+map <F12> :set number!<CR>
 " Paste
 "map <F11> :set paste!<bar>set paste?<CR>
 " Wrap
@@ -256,20 +256,20 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 au BufNewFile,BufRead *.docbook setf docbk
 nmap <Leader>px :%!xmllint --format -<CR>
 "nmap <Leader>l <Leader>cd:%w !xmllint --valid --noout -<CR>
-"nmap <Leader>d4 :%w !xmllint --dtdvalid 
+"nmap <Leader>d4 :%w !xmllint --dtdvalid
 " \ "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
 " \ --noout -<CR>
 
 
 "colorscheme rastafari
 
-"set laststatus=2 
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
+"set laststatus=2
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 """""
 """ taglist
 """"
-set tags=~/.vim/mytags/WAP
+"set tags=~/.vim/mytags/WAP
 
 
 "" use mouse for navigation
@@ -294,7 +294,7 @@ nnoremap <leader>f ma[[k"xyy`a:echo @x<CR>
 
 
 """"""""
-"""" Shortcuts 
+"""" Shortcuts
 """"""""
 nnoremap <silent> `1 :NERDTreeToggle<CR>
 nnoremap <silent> `2 :TlistToggle<CR>
@@ -307,9 +307,10 @@ map Q gq
 "Tab configuration
 "map <leader>tn :tabnew %<cr>
 map <leader>te :tabedit 
-map <leader>tt :tabnext<cr>
+map <leader>tt :TlistToggle<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+map <leader>tn :tabnew
 
 set stal=1
 "try
@@ -318,7 +319,7 @@ set stal=1
 "catch
 "endtry
 
-" 
+"
 " Configure tabs for the console version
 "
 "function MyTabLine()
@@ -349,12 +350,10 @@ set stal=1
 "endfunction
 "set tabline=%!MyTabLine()
 
-
 "Bash like
 cnoremap <C-A>    <Home>
 cnoremap <C-E>    <End>
 cnoremap <C-K>    <C-U>
-
 
 "" \w will switch windows and resize
 noremap <Leader>w <C-W><C-W>:res<cr>
@@ -363,6 +362,10 @@ noremap <Leader>w <C-W><C-W>:res<cr>
 " Perl Section
 """"""""""""""""""""""""""""""
 autocmd BufNew,BufRead  *.pl,*.pm   set filetype=perl
+autocmd BufRead            *.pod  set filetype=perl
+autocmd BufNewFile         *.pod  set filetype=perl
+"| call Perl_CommentTemplates("pod")
+autocmd BufNewFile,BufRead *.t    set filetype=perl
 
 function! FileTypePerl()
     compiler perl
@@ -386,13 +389,15 @@ function! FileTypePerl()
     vnoremap <Leader>qt  :!perltidy  -q<cr>
 endfunction
 
+autocmd BufRead  *.json set filetype=json
 function! FileTypeJS()
     "compiler javascript
     set iskeyword-=.
+    map <Leader>rr :w<CR>:exe ":!node " . getreg("%") . "" <CR>
 endfunction
 
 """"""""""""""""""""""""""""""
-" Ruby & PHP section
+" PHP section
 """"""""""""""""""""""""""""""
 autocmd BufRead  *.module set filetype=php
 autocmd BufRead  *.inc set filetype=php
@@ -407,12 +412,67 @@ function! FileTypePHP()
     map <Leader>rr :make %<cr>
 endfunction
 
+""""""""""""""""""""""""""""""
+" Ruby section
+""""""""""""""""""""""""""""""
+autocmd BufRead Vagrantfile set filetype=ruby
+
+function! FileTypeRuby()
+    compiler ruby
+    set tabstop=2
+    set shiftwidth=2
+    set makeprg=ruby\ -c\ %
+"    set errorformat=%m\ in\ %f\ on\ line\ %l
+"    map <Leader>rr :make %<cr>
+    map <Leader>rr :w<CR>:exe ":!ruby " . getreg("%") . "" <CR>
+endfunction
+
 autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
+autocmd FileType ruby call FileTypeRuby()
 let g:ShowFuncSortType = "no"
 set iskeyword-=.
 
 
-:map <Leader>s :tabnew<CR>:Scratch<CR>
+map <Leader>s :tabnew<CR>:Scratch<CR>
+
+let g:ctags_statusline=1
+let g:ctags_title=0
+let g:generate_tags=1 
+let g:ctags_regenerate=1
+
+noremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
+inoremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
+
+let tlist_perl_settings  = 'perl;c:constants;l:labels;p:package;s:subroutines;d:POD'
+
+" if $TERM=screen then
+set ttymouse=xterm
+nmap <silent> <Leader>tt :CommandT<CR>
+
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
+" One way to make sure to remove all training whitespace in a file is to set
+" an autocmd in your .vimrc file. Everytime the user issue a :w command, Vim
+" will automatically remove all trailing whitespace before saving.
+autocmd BufWritePre *.pp :%s/\s\+$//e
+
+set nonumber
+
+nmap <silent> <Leader>nt :NERDTreeToggle<CR>
+nmap <Leader>p :set paste!<CR>
+
+" I hate folds
+set nofoldenable
+
+" https://github.com/altercation/vim-colors-solarized
+colorscheme solarized
+if has('gui_running')
+    let g:solarized_termtrans=1
+endif
+
+" for power line
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+let g:Powerline_colorscheme = 'skwp'
 
