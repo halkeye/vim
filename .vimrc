@@ -409,7 +409,8 @@ function! FileTypePHP()
 "    map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
     set makeprg=php\ -l\ %
     set errorformat=%m\ in\ %f\ on\ line\ %l
-    map <Leader>rr :make %<cr>
+    map <Leader>rr :w<CR>:exe ":!php " . getreg("%") . "" <CR>
+    map <Leader>rs :make %<cr>
 endfunction
 
 """"""""""""""""""""""""""""""
