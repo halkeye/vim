@@ -47,8 +47,8 @@ set terse
 "	keep the screen tidy
 set redraw optimize
 " use spaces rather then tabs, with a width of 2
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " this will show tabs and trailing spaces
@@ -96,8 +96,8 @@ set whichwrap=b,s,<,>,[,]       " cursors will now wrap
 
 "autocmd BufNewFile */validate/*.yml 0r ~/symvimny/validate.yml
 "autocmd BufNewFile */config/schema.xml 0r ~/symvimny/schema.xml
-autocmd BufNewFile *.yml set tabstop=2
-autocmd BufNewFile *.yml set shiftwidth=2
+autocmd BufNewFile *.yml set tabstop=4
+autocmd BufNewFile *.yml set shiftwidth=4
 
 "autocmd BufNewFile *template* set tabstop=2
 "autocmd BufNewFile *template* set shiftwidth=2
@@ -236,13 +236,7 @@ set nowrap
 "   au FileType javascript call JavaScriptFold()
 "   au FileType javascript setl fen
 
-   au FileType javascript imap <c-t> console.log();<esc>hi
-   au FileType javascript imap <c-a> alert();<esc>hi
    au FileType javascript setl nocindent
-   au FileType javascript inoremap <buffer> $r return
-
-   au FileType javascript inoremap <buffer> $d //<cr>//<cr>//<esc>ka<space>
-   au FileType javascript inoremap <buffer> $c /**<cr><space><cr>**/<esc>ka
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC
@@ -428,6 +422,8 @@ function! FileTypeRuby()
     map <Leader>rr :w<CR>:exe ":!ruby " . getreg("%") . "" <CR>
 endfunction
 
+autocmd BufRead  *.ejs set filetype=html.javascript
+
 autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
@@ -467,7 +463,7 @@ nmap <Leader>p :set paste!<CR>
 set nofoldenable
 
 " https://github.com/altercation/vim-colors-solarized
-colorscheme solarized
+"colorscheme solarized
 if has('gui_running')
     let g:solarized_termtrans=1
 endif
@@ -477,3 +473,7 @@ set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 let g:Powerline_colorscheme = 'skwp'
 
+" http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
+autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
+autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+highlight EOLWS ctermbg=red guibg=red
