@@ -223,6 +223,7 @@ set nowrap
    """"""""""""""""""""""""""""""
    " JavaScript section
    """""""""""""""""""""""""""""""
+<<<<<<< HEAD
 "   function! JavaScriptFold()
 "     setl foldmethod=syntax
 "     setl foldlevelstart=1
@@ -422,8 +423,7 @@ function! FileTypeRuby()
     map <Leader>rr :w<CR>:exe ":!ruby " . getreg("%") . "" <CR>
 endfunction
 
-autocmd BufRead  *.ejs set filetype=html.javascript
-
+autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
 autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
