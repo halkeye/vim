@@ -223,21 +223,6 @@ set nowrap
    """"""""""""""""""""""""""""""
    " JavaScript section
    """""""""""""""""""""""""""""""
-"   function! JavaScriptFold()
-"     setl foldmethod=syntax
-"     setl foldlevelstart=1
-"     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-"
-"     function! FoldText()
-"       return substitute(getline(v:foldstart), '{.*', '{...}', '')
-"     endfunction
-"     setl foldtext=FoldText()
-"   endfunction
-"   au FileType javascript call JavaScriptFold()
-"   au FileType javascript setl fen
-
-   au FileType javascript imap <c-t> console.log();<esc>hi
-   au FileType javascript imap <c-a> alert();<esc>hi
    au FileType javascript setl nocindent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -424,6 +409,7 @@ function! FileTypeRuby()
     map <Leader>rr :w<CR>:exe ":!ruby " . getreg("%") . "" <CR>
 endfunction
 
+autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
 autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
