@@ -239,10 +239,6 @@ set nowrap
    au FileType javascript imap <c-t> console.log();<esc>hi
    au FileType javascript imap <c-a> alert();<esc>hi
    au FileType javascript setl nocindent
-   au FileType javascript inoremap <buffer> $r return
-
-   au FileType javascript inoremap <buffer> $d //<cr>//<cr>//<esc>ka<space>
-   au FileType javascript inoremap <buffer> $c /**<cr><space><cr>**/<esc>ka
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC
