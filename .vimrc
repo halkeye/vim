@@ -92,16 +92,6 @@ set showmatch                   " show matching brackets
 set formatoptions=tcqor
 set whichwrap=b,s,<,>,[,]       " cursors will now wrap
 
-" }}} Symfony Code Templates
-
-"autocmd BufNewFile */validate/*.yml 0r ~/symvimny/validate.yml
-"autocmd BufNewFile */config/schema.xml 0r ~/symvimny/schema.xml
-autocmd BufNewFile *.yml set tabstop=4
-autocmd BufNewFile *.yml set shiftwidth=4
-
-"autocmd BufNewFile *template* set tabstop=2
-"autocmd BufNewFile *template* set shiftwidth=2
-
 " Toggle Numbers
 map <F12> :set number!<CR>
 " Paste
@@ -370,7 +360,7 @@ function! FileTypePerl()
     vnoremap <Leader>qt  :!perltidy  -q<cr>
 endfunction
 
-autocmd BufRead  *.json set filetype=json
+autocmd BufNewFile,BufRead .jshintrc,*.json set filetype=json
 function! FileTypeJS()
     "compiler javascript
     set iskeyword-=.
