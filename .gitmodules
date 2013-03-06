@@ -43,3 +43,6 @@
 [submodule "bundle/gitdiff"]
 	path = bundle/gitdiff
 	url = https://github.com/vim-scripts/gitdiff.vim.git
+[submodule "bundle/vim-gitgutter.git"]
+	path = bundle/vim-gitgutter.git
+	url = git://github.com/airblade/vim-gitgutter.git
