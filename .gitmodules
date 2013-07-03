@@ -19,9 +19,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "bundle/puppet"]
-	path = bundle/puppet
-	url = git://github.com/rodjek/vim-puppet.git
 [submodule "bundle/vim-markdown"]
 	path = bundle/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
@@ -43,3 +40,12 @@
 [submodule "bundle/gitdiff"]
 	path = bundle/gitdiff
 	url = https://github.com/vim-scripts/gitdiff.vim.git
+[submodule "bundle/vim-gitgutter.git"]
+	path = bundle/vim-gitgutter.git
+	url = git://github.com/airblade/vim-gitgutter.git
+[submodule "bundle/handlebars"]
+	path = bundle/handlebars
+	url = git://github.com/nono/vim-handlebars.git
+[submodule "bundle/vim-coffee-script"]
+	path = bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
