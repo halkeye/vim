@@ -453,3 +453,14 @@ let g:Powerline_colorscheme = 'skwp'
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
 highlight EOLWS ctermbg=red guibg=red
+
+" http://www.blaulabs.de/2012/12/19/hidden-gems-in-vimruntime/
+augroup vim_config
+  autocmd FileType gitrebase call LoadGitrebaseBindings()
+augroup END
+
+fun! LoadGitrebaseBindings()
+  nnoremap  P :Pick
+  nnoremap  S :Squash
+  nnoremap  C :Cycle
+endfun
