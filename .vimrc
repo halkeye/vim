@@ -400,11 +400,16 @@ function! FileTypeRuby()
     map <Leader>rr :w<CR>:exe ":!ruby " . getreg("%") . "" <CR>
 endfunction
 
+function! FileTypePython()
+  map <Leader>rr :w<CR>:exe ":!python " . getreg("%") . "" <CR>
+endfunction
+
 autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
 autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
 autocmd FileType ruby call FileTypeRuby()
+autocmd FileType python call FileTypePython()
 let g:ShowFuncSortType = "no"
 set iskeyword-=.
 
@@ -465,3 +470,7 @@ fun! LoadGitrebaseBindings()
   nnoremap  S :Squash
   nnoremap  C :Cycle
 endfun
+
+"------------SYNTASTIC-----------
+let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.json"
+
