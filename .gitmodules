@@ -52,6 +52,3 @@
 [submodule "bundle/vim-issues"]
 	path = bundle/vim-issues
 	url = https://github.com/mklabs/vim-issues.git
-[submodule "/home/halkeye/.vim/bundle/vim-airline"]
-	path = /home/halkeye/.vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline

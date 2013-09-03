@@ -451,9 +451,9 @@ if has('gui_running')
 endif
 
 " for power line
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-let g:Powerline_colorscheme = 'skwp'
+"set laststatus=2   " Always show the statusline
+"set encoding=utf-8 " Necessary to show Unicode glyphs
+"let g:Powerline_colorscheme = 'skwp'
 
 " http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
