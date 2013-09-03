@@ -400,10 +400,16 @@ function! FileTypeRuby()
     map <Leader>rr :w<CR>:exe ":!ruby " . getreg("%") . "" <CR>
 endfunction
 
+function! FileTypePython()
+    "compiler javascript
+    map <Leader>rr :w<CR>:exe ":!python " . getreg("%") . "" <CR>
+endfunction
+
 autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
 autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
+autocmd FileType python call FileTypePython()
 autocmd FileType ruby call FileTypeRuby()
 let g:ShowFuncSortType = "no"
 set iskeyword-=.
