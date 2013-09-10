@@ -52,3 +52,6 @@
 [submodule "bundle/vim-issues"]
 	path = bundle/vim-issues
 	url = https://github.com/mklabs/vim-issues.git
+[submodule "bundle/grunt.vim"]
+	path = bundle/grunt.vim
+	url = https://github.com/mklabs/grunt.vim.git
