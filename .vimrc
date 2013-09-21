@@ -449,6 +449,9 @@ set nofoldenable
 if has('gui_running')
     let g:solarized_termtrans=1
 endif
+if !has('gui_running')
+  set t_Co=256
+endif
 
 " for power line
 "set laststatus=2   " Always show the statusline
@@ -474,3 +477,7 @@ endfun
 "------------SYNTASTIC-----------
 let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.json"
 
+"------------Air/Power/Lightline-------
+set laststatus=2
+colorscheme darkblue
+let g:lightline = { 'colorscheme': 'solarized', }
