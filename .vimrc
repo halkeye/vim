@@ -400,10 +400,15 @@ function! FileTypeRuby()
     map <Leader>rr :w<CR>:exe ":!ruby " . getreg("%") . "" <CR>
 endfunction
 
+function! FileTypePython()
+  map <Leader>rr :w<CR>:exe ":!python " . getreg("%") . "" <CR>
+endfunction
+
 autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
 autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
+autocmd FileType python call FileTypePython()
 autocmd FileType ruby call FileTypeRuby()
 let g:ShowFuncSortType = "no"
 set iskeyword-=.
@@ -444,11 +449,14 @@ set nofoldenable
 if has('gui_running')
     let g:solarized_termtrans=1
 endif
+if !has('gui_running')
+  set t_Co=256
+endif
 
 " for power line
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-let g:Powerline_colorscheme = 'skwp'
+"set laststatus=2   " Always show the statusline
+"set encoding=utf-8 " Necessary to show Unicode glyphs
+"let g:Powerline_colorscheme = 'skwp'
 
 " http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
@@ -465,3 +473,11 @@ fun! LoadGitrebaseBindings()
   nnoremap  S :Squash
   nnoremap  C :Cycle
 endfun
+
+"------------SYNTASTIC-----------
+let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.json"
+
+"------------Air/Power/Lightline-------
+set laststatus=2
+colorscheme darkblue
+let g:lightline = { 'colorscheme': 'solarized', }
