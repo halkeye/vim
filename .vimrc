@@ -401,6 +401,8 @@ function! FileTypeRuby()
 endfunction
 
 function! FileTypePython()
+  set tabstop=4
+  set shiftwidth=4
   map <Leader>rr :w<CR>:exe ":!python " . getreg("%") . "" <CR>
 endfunction
 
@@ -476,8 +478,10 @@ endfun
 
 "------------SYNTASTIC-----------
 let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.json"
+let g:syntastic_python_checkers=['pep8']
 
 "------------Air/Power/Lightline-------
 set laststatus=2
 colorscheme darkblue
 let g:lightline = { 'colorscheme': 'solarized', }
+
