@@ -485,3 +485,4 @@ set laststatus=2
 colorscheme darkblue
 let g:lightline = { 'colorscheme': 'solarized', }
 
+let g:syntastic_html_tidy_ignore_errors = [ "<div> proprietary attribute \"role\"" ]
