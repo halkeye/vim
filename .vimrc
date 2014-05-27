@@ -487,3 +487,8 @@ set laststatus=2
 colorscheme darkblue
 let g:lightline = { 'colorscheme': 'solarized', }
 
+"------------Make ctrl+p open in new tab---------
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': [],
+  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+  \ }
