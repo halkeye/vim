@@ -1,3 +1,4 @@
+let g:ctrlp_custom_ignore = 'vendor\/bundle|coverage|test\/reports'
 filetype off
 call pathogen#infect()
 call pathogen#incubate()
