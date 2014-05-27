@@ -398,6 +398,7 @@ function! FileTypeRuby()
     set makeprg=ruby\ -c\ %
 "    set errorformat=%m\ in\ %f\ on\ line\ %l
 "    map <Leader>rr :make %<cr>
+    map <Leader>rt :w<CR>:exe ":!ruby -Itest " . getreg("%") . "" <CR>
     map <Leader>rr :w<CR>:exe ":!ruby " . getreg("%") . "" <CR>
 endfunction
 
