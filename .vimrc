@@ -492,3 +492,5 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
   \ }
+"------------Syntastic needs to ignore role attribute for divs---------
+let g:syntastic_html_tidy_ignore_errors = [ "<div> proprietary attribute \"role\"" ]
