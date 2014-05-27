@@ -6,7 +6,6 @@ call pathogen#helptags()
 filetype plugin indent on
 
 
-
 " turn off vi compat
 set nocompatible
 
@@ -390,6 +389,7 @@ endfunction
 " Ruby section
 """"""""""""""""""""""""""""""
 autocmd BufRead Vagrantfile set filetype=ruby
+autocmd BufRead *.cap set filetype=ruby
 
 function! FileTypeRuby()
     compiler ruby
