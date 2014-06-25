@@ -5,20 +5,13 @@ let g:ctrlp_custom_ignore = 'vendor\/bundle|coverage|test\/reports'
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 " Lets try these out
 Bundle "http://github.com/rstacruz/sparkup.git", {'rtp': 'vim/'}
 
 " Old ones
-Plugin 'vim-scripts/Wombat'
-Plugin 'junegunn/seoul256.vim'
-Plugin 'vim-scripts/Relaxed-Green'
-Plugin 'vim-scripts/rastafari.vim'
-Plugin 'vim-scripts/moria'
-Plugin 'mitsuhiko/fruity-vim-colorscheme'
-Plugin 'vim-scripts/candycode.vim'
-Plugin 'vim-scripts/asu1dark.vim'
-Plugin 'vim-scripts/adam.vim'
 Plugin 'mileszs/ack.vim'
 
 " Programming
@@ -45,6 +38,14 @@ Plugin 'tpope/vim-fugitive'
 " Color Schemes
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'itchyny/lightline.vim'
+
+Plugin 'vim-scripts/Wombat'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'vim-scripts/Relaxed-Green'
+Plugin 'vim-scripts/rastafari.vim'
+Plugin 'vim-scripts/moria'
+Plugin 'mitsuhiko/fruity-vim-colorscheme'
+Plugin 'vim-scripts/candycode.vim'
 
 " Other
 Plugin 'taglist.vim'
