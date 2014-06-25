@@ -6,6 +6,10 @@ let g:ctrlp_custom_ignore = 'vendor\/bundle|coverage|test\/reports'
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Lets try these out
+Bundle "http://github.com/rstacruz/sparkup.git", {'rtp': 'vim/'}
+
+" Old ones
 Plugin 'vim-scripts/Wombat'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'vim-scripts/Relaxed-Green'
@@ -17,41 +21,46 @@ Plugin 'vim-scripts/asu1dark.vim'
 Plugin 'vim-scripts/adam.vim'
 Plugin 'mileszs/ack.vim'
 
-" https://github.com/taq/vim-git-branch-info 
-Plugin 'taq/vim-git-branch-info'
+" Programming
+Bundle "jQuery"
+Bundle "rails.vim"
 
-" https://github.com/tmhedberg/matchit
-Plugin 'tmhedberg/matchit'
-
-" https://github.com/vim-scripts/perl-support.vim
+" Syntax Highlighting/Languages
+"Bundle "pangloss/vim-javascript"
+Bundle 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/perl-support.vim'
+Bundle 'nono/vim-handlebars.git'
+Bundle 'vim-scripts/vim-json-bundle.git'
+Bundle 'c9s/perlomni.vim.git'
+Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'leafgarland/typescript-vim.git'
+Bundle 'mklabs/grunt.vim.git'
+Bundle 'othree/html5.vim.git'
+Bundle 'plasticboy/vim-markdown.git'
+Bundle 'rodjek/vim-puppet'
 
 " GIT SUPPORT
 Plugin 'tpope/vim-fugitive'
 
-" Vim Javascript
-"Bundle "pangloss/vim-javascript"
-Bundle 'jelera/vim-javascript-syntax'
-
+" Color Schemes
 Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'nono/vim-handlebars.git'
+Bundle 'itchyny/lightline.vim'
+
+" Other
+Plugin 'taglist.vim'
+Plugin 'taq/vim-git-branch-info'
+Plugin 'tmhedberg/matchit'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'tpope/vim-unimpaired.git'
-Bundle 'vim-scripts/vim-json-bundle.git'
-Bundle 'c9s/perlomni.vim.git'
 Bundle 'ervandew/supertab.git'
 Bundle 'bronson/vim-trailing-whitespace.git'
+" :FixWhitespace
 Bundle 'editorconfig/editorconfig-vim.git'
-Bundle 'itchyny/lightline.vim'
-Bundle 'kchmck/vim-coffee-script.git'
 Bundle 'kien/ctrlp.vim.git'
-Bundle 'leafgarland/typescript-vim.git'
-Bundle 'mklabs/grunt.vim.git'
 Bundle 'mklabs/vim-issues.git'
-Bundle 'othree/html5.vim.git'
-Bundle 'plasticboy/vim-markdown.git'
 Bundle 'vim-scripts/gitdiff.vim.git'
+Plugin 'bufexplorer.zip'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -60,6 +69,10 @@ filetype plugin indent on    " required
 " Automatically reload .vimrc when changing
 autocmd! bufwritepost .vimrc source %
 
+" File types
+autocmd BufNewFile,BufRead *.gradle setf groovy
+
+" Old Config Starts here
 let g:Perl_PerlTags        = 'enabled'
 
 function! LoadWorkAuthor()
@@ -99,11 +112,6 @@ set redraw optimize
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
-" this will show tabs and trailing spaces
-"set list
-"set listchars=tab:>-,trail:-
-
 
 " Auto indent after a {
 "set autoindent
