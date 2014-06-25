@@ -1,13 +1,61 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
 let g:ctrlp_custom_ignore = 'vendor\/bundle|coverage|test\/reports'
-filetype off
-call pathogen#infect()
-call pathogen#incubate()
-call pathogen#helptags()
-filetype plugin indent on
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+Plugin 'vim-scripts/Wombat'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'vim-scripts/Relaxed-Green'
+Plugin 'vim-scripts/rastafari.vim'
+Plugin 'vim-scripts/moria'
+Plugin 'mitsuhiko/fruity-vim-colorscheme'
+Plugin 'vim-scripts/candycode.vim'
+Plugin 'vim-scripts/asu1dark.vim'
+Plugin 'vim-scripts/adam.vim'
+Plugin 'mileszs/ack.vim'
 
-" turn off vi compat
-set nocompatible
+" https://github.com/taq/vim-git-branch-info 
+Plugin 'taq/vim-git-branch-info'
+
+" https://github.com/tmhedberg/matchit
+Plugin 'tmhedberg/matchit'
+
+" https://github.com/vim-scripts/perl-support.vim
+Plugin 'vim-scripts/perl-support.vim'
+
+" GIT SUPPORT
+Plugin 'tpope/vim-fugitive'
+
+" Vim Javascript
+"Bundle "pangloss/vim-javascript"
+Bundle 'jelera/vim-javascript-syntax'
+
+Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'nono/vim-handlebars.git'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'scrooloose/syntastic.git'
+Bundle 'tpope/vim-unimpaired.git'
+Bundle 'vim-scripts/vim-json-bundle.git'
+Bundle 'c9s/perlomni.vim.git'
+Bundle 'ervandew/supertab.git'
+Bundle 'bronson/vim-trailing-whitespace.git'
+Bundle 'editorconfig/editorconfig-vim.git'
+Bundle 'itchyny/lightline.vim'
+Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'leafgarland/typescript-vim.git'
+Bundle 'mklabs/grunt.vim.git'
+Bundle 'mklabs/vim-issues.git'
+Bundle 'othree/html5.vim.git'
+Bundle 'plasticboy/vim-markdown.git'
+Bundle 'vim-scripts/gitdiff.vim.git'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " Automatically reload .vimrc when changing
 autocmd! bufwritepost .vimrc source %
@@ -16,14 +64,14 @@ let g:Perl_PerlTags        = 'enabled'
 
 function! LoadWorkAuthor()
     let g:Perl_AuthorName      = 'Gavin Mogan'
-    let g:Perl_AuthorRef       = 'Gavinm'
-    let g:Perl_Email           = 'gavinm@airg.com'
-    let g:Perl_Company         = 'airG'
+    let g:Perl_AuthorRef       = 'Gavin Mogan'
+    let g:Perl_Email           = 'gavin.mogan@telus.com'
+    let g:Perl_Company         = 'TELUS'
 endfunction
 
 function! LoadHomeAuthor()
     let g:Perl_AuthorName      = 'Gavin Mogan'
-    let g:Perl_AuthorRef       = 'Gavin'
+    let g:Perl_AuthorRef       = 'Gavin Mogan'
     let g:Perl_Email           = 'gavin@kodekoan.com'
     let g:Perl_Company         = 'KodeKoan'
 endfunction
@@ -285,42 +333,6 @@ map <leader>tm :tabmove
 map <leader>tn :tabnew
 
 set stal=1
-"try
-"  set switchbuf=usetab
-"  set stal=1
-"catch
-"endtry
-
-"
-" Configure tabs for the console version
-"
-"function MyTabLine()
-"        let s = ''
-"        let t = tabpagenr()
-"        let i = 1
-"        while i <= tabpagenr('$')
-"                let buflist = tabpagebuflist(i)
-"                let winnr = tabpagewinnr(i)
-"                let s .= '%' . i . 'T'
-"                let s .= (i == t ? '%1*' : '%2*')
-"                let s .= ' '
-"                let s .= i . ':'
-"                let s .= winnr . '/' . tabpagewinnr(i,'$')
-"                let s .= ' %*'
-"                let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-"                let file = bufname(buflist[winnr - 1])
-"                let file = fnamemodify(file, ':p:t')
-"                if file == ''
-"                        let file = '[No Name]'
-"                endif
-"                let s .= file
-"                let i = i + 1
-"        endwhile
-"        let s .= '%T%#TabLineFill#%='
-"        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-"        return s
-"endfunction
-"set tabline=%!MyTabLine()
 
 "Bash like
 cnoremap <C-A>    <Home>
