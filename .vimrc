@@ -61,6 +61,7 @@ Bundle 'kien/ctrlp.vim.git'
 Bundle 'mklabs/vim-issues.git'
 Bundle 'vim-scripts/gitdiff.vim.git'
 Plugin 'bufexplorer.zip'
+Plugin 'minibufexpl.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
