@@ -9,38 +9,38 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Lets try these out
-Bundle "http://github.com/rstacruz/sparkup.git", {'rtp': 'vim/'}
+Plugin "http://github.com/rstacruz/sparkup.git", {'rtp': 'vim/'}
 
 " Old ones
 Plugin 'mileszs/ack.vim'
 
 " Programming
-Bundle "jQuery"
-Bundle "rails.vim"
+Plugin "jQuery"
+Plugin "rails.vim"
 
 " Syntax Highlighting/Languages
-"Bundle "pangloss/vim-javascript"
-Bundle 'jelera/vim-javascript-syntax'
+"Plugin "pangloss/vim-javascript"
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/perl-support.vim'
-Bundle 'nono/vim-handlebars.git'
-Bundle 'vim-scripts/vim-json-bundle.git'
-Bundle 'c9s/perlomni.vim.git'
-Bundle 'kchmck/vim-coffee-script.git'
-Bundle 'leafgarland/typescript-vim.git'
-Bundle 'mklabs/grunt.vim.git'
-Bundle 'othree/html5.vim.git'
-Bundle 'plasticboy/vim-markdown.git'
-Bundle 'rodjek/vim-puppet'
+Plugin 'nono/vim-handlebars.git'
+Plugin 'vim-scripts/vim-json-bundle.git'
+Plugin 'c9s/perlomni.vim.git'
+Plugin 'kchmck/vim-coffee-script.git'
+Plugin 'leafgarland/typescript-vim.git'
+Plugin 'mklabs/grunt.vim.git'
+Plugin 'othree/html5.vim.git'
+Plugin 'plasticboy/vim-markdown.git'
+Plugin 'rodjek/vim-puppet'
 
-Bundle 'kien/rainbow_parentheses.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 
 " GIT SUPPORT
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 " Color Schemes
-Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'itchyny/lightline.vim'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'itchyny/lightline.vim'
 
 Plugin 'vim-scripts/Wombat'
 Plugin 'junegunn/seoul256.vim'
@@ -54,16 +54,16 @@ Plugin 'vim-scripts/candycode.vim'
 Plugin 'taglist.vim'
 Plugin 'taq/vim-git-branch-info'
 Plugin 'tmhedberg/matchit'
-Bundle 'scrooloose/nerdtree.git'
-Bundle 'scrooloose/syntastic.git'
-Bundle 'tpope/vim-unimpaired.git'
-Bundle 'ervandew/supertab.git'
-Bundle 'bronson/vim-trailing-whitespace.git'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'tpope/vim-unimpaired.git'
+Plugin 'ervandew/supertab.git'
+Plugin 'bronson/vim-trailing-whitespace.git'
 " :FixWhitespace
-Bundle 'editorconfig/editorconfig-vim.git'
-Bundle 'kien/ctrlp.vim.git'
-Bundle 'mklabs/vim-issues.git'
-Bundle 'vim-scripts/gitdiff.vim.git'
+Plugin 'editorconfig/editorconfig-vim.git'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'mklabs/vim-issues.git'
+Plugin 'vim-scripts/gitdiff.vim.git'
 Plugin 'bufexplorer.zip'
 Plugin 'minibufexpl.vim'
 
