@@ -1,4 +1,6 @@
-	deleted:    bundle/bufexplorer/doc/bufexplorer.txt
+# for i in ~/.vim/bundle/*; do grep -qi $(basename $i) .vimrc || echo $(basename $i); done
+#
+# deleted:    bundle/bufexplorer/doc/bufexplorer.txt
 	deleted:    bundle/bufexplorer/doc/tags
 	deleted:    bundle/bufexplorer/plugin/bufexplorer.vim
 	deleted:    bundle/ctrlp.vim
