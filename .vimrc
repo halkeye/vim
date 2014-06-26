@@ -32,8 +32,11 @@ Bundle 'othree/html5.vim.git'
 Bundle 'plasticboy/vim-markdown.git'
 Bundle 'rodjek/vim-puppet'
 
+Bundle 'kien/rainbow_parentheses.vim'
+
 " GIT SUPPORT
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 
 " Color Schemes
 Bundle 'altercation/vim-colors-solarized.git'
