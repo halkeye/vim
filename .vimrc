@@ -9,14 +9,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Lets try these out
-Plugin "http://github.com/rstacruz/sparkup.git", {'rtp': 'vim/'}
+Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
 
 " Old ones
 Plugin 'mileszs/ack.vim'
 
 " Programming
-Plugin "jQuery"
-Plugin "rails.vim"
+Plugin 'jQuery'
+Plugin 'rails.vim'
 
 " Syntax Highlighting/Languages
 "Plugin "pangloss/vim-javascript"
