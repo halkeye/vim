@@ -42,6 +42,7 @@ Plugin 'plasticboy/vim-markdown.git'
 Plugin 'rodjek/vim-puppet'
 
 Plugin 'kien/rainbow_parentheses.vim'
+" :RainbowParenthesesToggle
 
 " GIT SUPPORT
 Plugin 'tpope/vim-fugitive'
