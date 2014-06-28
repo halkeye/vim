@@ -75,7 +75,7 @@ Plugin 'kien/ctrlp.vim.git'
 Plugin 'mklabs/vim-issues.git'
 Plugin 'vim-scripts/gitdiff.vim.git'
 Plugin 'bufexplorer.zip'
-Plugin 'minibufexpl.vim'
+" Plugin 'minibufexpl.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
