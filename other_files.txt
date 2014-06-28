@@ -31,7 +31,6 @@
 	deleted:    bundle/vim-issues
 	deleted:    bundle/vim-markdown
 	deleted:    bundle/vim-trailing-whi
-rename.vim
 vim-jade
 vim-jst
 vim-ruby-doc

@@ -61,6 +61,8 @@ Plugin 'mitsuhiko/fruity-vim-colorscheme'
 Plugin 'vim-scripts/candycode.vim'
 
 " Other
+Plugin 'rename.vim'
+" :Rename
 Plugin 'taglist.vim'
 Plugin 'taq/vim-git-branch-info'
 Plugin 'tmhedberg/matchit'
