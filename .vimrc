@@ -238,9 +238,7 @@ cnoremap <C-K>    <C-U>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Enable folding, I find it very useful
-"set nofen
-"set fdl=0
+set nofoldenable    " disable folding
 
 """"""""""""""""""""""""""""""
 " Indent
