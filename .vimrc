@@ -238,7 +238,9 @@ cnoremap <C-K>    <C-U>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nofoldenable    " disable folding
+" I hate folds
+set nofoldenable
+let g:vim_markdown_folding_disabled=1
 
 """"""""""""""""""""""""""""""
 " Indent
@@ -472,9 +474,6 @@ set nonumber
 
 nmap <silent> <Leader>nt :NERDTreeToggle<CR>
 nmap <Leader>p :set paste!<CR>
-
-" I hate folds
-set nofoldenable
 
 " https://github.com/altercation/vim-colors-solarized
 "colorscheme solarized
