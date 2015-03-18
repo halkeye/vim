@@ -3,7 +3,7 @@ filetype off                  " required
 
 "let g:ctrlp_custom_ignore = 'vendor\/bundle|coverage|test\/reports|bower_components|app\/bower_components'
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '.git$|vendor|.hg$|.svn$|.yardoc|public/images|public/system|data|log|tmp$|bower_components|node_modules|tmp|dist',
+      \ 'dir':  '.git$|vendor|.hg$|.svn$|.yardoc|public/images|public/system|data|log|tmp$|bower_components|node_modules|tmp|dist|target',
       \ 'file': '.exe$|.so$|.dat$'
       \ }
 "let g:NERDTreeIgnore=['~$', 'vendor', 'bower_components','node_modules']
@@ -12,6 +12,7 @@ set wildignore+=*\bower_components\**
 set wildignore+=*\node_modules\**
 set wildignore+=*\tmp\**
 set wildignore+=*\dist\**
+set wildignore+=*\target\**
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -45,6 +46,8 @@ Plugin 'othree/html5.vim.git'
 Plugin 'plasticboy/vim-markdown.git'
 Plugin 'rodjek/vim-puppet'
 Plugin 'jnwhiteh/vim-golang'
+Plugin 'maven-plugin'
+Plugin 'fatih/vim-go'
 
 Plugin 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
@@ -438,12 +441,19 @@ function! FileTypePython()
   map <Leader>rr :w<CR>:exe ":!python " . getreg("%") . "" <CR>
 endfunction
 
+function! FileTypeGo()
+  map <leader>rr <Plug>(go-run)
+endfunction
+
 autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
+let g:syntastic_java_checkers=['']
+
 autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
 autocmd FileType python call FileTypePython()
 autocmd FileType ruby call FileTypeRuby()
+autocmd FileType go call FileTypeGo()
 let g:ShowFuncSortType = "no"
 set iskeyword-=.
 
