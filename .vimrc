@@ -59,6 +59,7 @@ Plugin 'jaxbot/github-issues.vim'
 Plugin 'airblade/vim-gitgutter'
 
 " Color Schemes
+Plugin 'w0ng/vim-hybrid.git'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'itchyny/lightline.vim'
 
@@ -82,6 +83,7 @@ Plugin 'tpope/vim-unimpaired.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'bronson/vim-trailing-whitespace.git'
 " :FixWhitespace
+Plugin 'Tabular'
 Plugin 'editorconfig/editorconfig-vim.git'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'mklabs/vim-issues.git'
@@ -541,6 +543,7 @@ let g:lightline = {
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
+colorscheme hybrid
 
 "------------Make ctrl+p open in new tab---------
 let g:ctrlp_prompt_mappings = {
