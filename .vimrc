@@ -40,6 +40,7 @@ Plugin 'mklabs/grunt.vim.git'
 Plugin 'othree/html5.vim.git'
 Plugin 'plasticboy/vim-markdown.git'
 Plugin 'rodjek/vim-puppet'
+Plugin 'tpope/vim-haml'
 
 Plugin 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
@@ -62,6 +63,7 @@ Plugin 'vim-scripts/candycode.vim'
 
 " Other
 Plugin 'rename.vim'
+Plugin 'Rename'
 " :Rename
 Plugin 'taglist.vim'
 Plugin 'taq/vim-git-branch-info'
