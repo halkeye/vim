@@ -3,13 +3,15 @@ filetype off                  " required
 
 "let g:ctrlp_custom_ignore = 'vendor\/bundle|coverage|test\/reports|bower_components|app\/bower_components'
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '.git$|vendor|.hg$|.svn$|.yardoc|public/images|public/system|data|log|tmp$|bower_components|node_modules',
+      \ 'dir':  '.git$|vendor|.hg$|.svn$|.yardoc|public/images|public/system|data|log|tmp$|bower_components|node_modules|tmp|dist',
       \ 'file': '.exe$|.so$|.dat$'
       \ }
 "let g:NERDTreeIgnore=['~$', 'vendor', 'bower_components','node_modules']
 set wildignore+=*\vendor\**
 set wildignore+=*\bower_components\**
 set wildignore+=*\node_modules\**
+set wildignore+=*\tmp\**
+set wildignore+=*\dist\**
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -25,9 +27,11 @@ Plugin 'mileszs/ack.vim'
 
 " Programming
 Plugin 'jQuery'
-Plugin 'rails.vim'
+Plugin 'tpope/vim-rails'
+" http://vimawesome.com/plugin/rails-vim
 
 " Syntax Highlighting/Languages
+Plugin 'Handlebars'
 "Plugin "pangloss/vim-javascript"
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/perl-support.vim'
@@ -41,12 +45,15 @@ Plugin 'othree/html5.vim.git'
 Plugin 'plasticboy/vim-markdown.git'
 Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-haml'
+Plugin 'jnwhiteh/vim-golang'
 
 Plugin 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
 
 " GIT SUPPORT
 Plugin 'tpope/vim-fugitive'
+Plugin 'jaxbot/github-issues.vim'
+
 Plugin 'airblade/vim-gitgutter'
 
 " Color Schemes
@@ -146,23 +153,11 @@ set textwidth=0
 " Show line numbers by default
 "set number
 
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-
 " The completion dictionary is provided by Rasmus:
 " http://lerdorf.com/funclist.txt
 set dictionary-=~/symvimny/funclist.txt dictionary+=~/symvimny/funclist.txt
 " Use the dictionary completion
 set complete-=k complete+=k
-
-" Remap the tab key to select action with InsertTabWrapper
-"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 "set ignorecase                  " caseinsensitive searches-
 set showmode                    " always show command or insert mode-
@@ -245,9 +240,7 @@ cnoremap <C-K>    <C-U>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Enable folding, I find it very useful
-"set nofen
-"set fdl=0
+set nofoldenable    " disable folding
 
 """"""""""""""""""""""""""""""
 " Indent
@@ -522,7 +515,25 @@ let g:syntastic_python_checkers=['pep8']
 "------------Air/Power/Lightline-------
 set laststatus=2
 colorscheme darkblue
-let g:lightline = { 'colorscheme': 'solarized', }
+"let g:lightline = { 'colorscheme': 'solarized', }
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename', 'modified'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component': {
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
 
 "------------Make ctrl+p open in new tab---------
 let g:ctrlp_prompt_mappings = {
