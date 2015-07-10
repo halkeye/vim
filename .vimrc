@@ -33,14 +33,14 @@ Plugin 'tpope/vim-rails'
 
 " Syntax Highlighting/Languages
 Plugin 'Handlebars'
-"Plugin "pangloss/vim-javascript"
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+"Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/perl-support.vim'
 Plugin 'nono/vim-handlebars.git'
 Plugin 'vim-scripts/vim-json-bundle.git'
 Plugin 'c9s/perlomni.vim.git'
 Plugin 'kchmck/vim-coffee-script.git'
-Plugin 'leafgarland/typescript-vim.git'
+"Plugin 'leafgarland/typescript-vim.git'
 Plugin 'mklabs/grunt.vim.git'
 Plugin 'othree/html5.vim.git'
 Plugin 'plasticboy/vim-markdown.git'
@@ -48,6 +48,8 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'maven-plugin'
 Plugin 'fatih/vim-go'
+
+Plugin 'mxw/vim-jsx'
 
 Plugin 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
@@ -70,10 +72,14 @@ Plugin 'vim-scripts/rastafari.vim'
 Plugin 'vim-scripts/moria'
 Plugin 'mitsuhiko/fruity-vim-colorscheme'
 Plugin 'vim-scripts/candycode.vim'
+Plugin 'goatslacker/mango.vim'
 
 " Other
-Plugin 'rename.vim'
+Plugin 'Rename'
+Plugin 'wakatime/vim-wakatime'
+Plugin 'skwp/vim-html-escape'
 " :Rename
+"Plugin 'rename.vim'
 Plugin 'taglist.vim'
 Plugin 'taq/vim-git-branch-info'
 Plugin 'tmhedberg/matchit'
@@ -91,9 +97,17 @@ Plugin 'vim-scripts/gitdiff.vim.git'
 Plugin 'bufexplorer.zip'
 " Plugin 'minibufexpl.vim'
 
+Plugin 'Valloric/YouCompleteMe'
+" Ultisnips (compatible with YouCompleteMe):
+Plugin 'SirVer/ultisnips'
+"Plugin 'ahayman/vim-nodejs-complete.git'
+Plugin 'mattn/jscomplete-vim.git'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+syntax on
 
 " Automatically reload .vimrc when changing
 autocmd! bufwritepost .vimrc source %
@@ -128,7 +142,6 @@ else
 endif
 
 "colorscheme default
-syntax on
 set background=dark
 filetype plugin on
 
@@ -543,7 +556,6 @@ let g:lightline = {
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
-colorscheme hybrid
 
 "------------Make ctrl+p open in new tab---------
 let g:ctrlp_prompt_mappings = {
@@ -552,3 +564,17 @@ let g:ctrlp_prompt_mappings = {
   \ }
 "------------Syntastic needs to ignore role attribute for divs---------
 let g:syntastic_html_tidy_ignore_errors = [ "<div> proprietary attribute \"role\"" ]
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" colorscheme hybrid
+colorscheme candycode
+
+
+let g:syntastic_javascript_checkers = ['eslint']
+
