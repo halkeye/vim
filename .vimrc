@@ -34,7 +34,8 @@ Plugin 'tpope/vim-rails'
 " Syntax Highlighting/Languages
 Plugin 'Handlebars'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'jelera/vim-javascript-syntax'
+"Plugin 'jelera/vim-javascript-syntax
+Plugin 'othree/yajs.vim' " Yet another Javascript Sytnax
 Plugin 'vim-scripts/perl-support.vim'
 Plugin 'nono/vim-handlebars.git'
 Plugin 'vim-scripts/vim-json-bundle.git'
