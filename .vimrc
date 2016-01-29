@@ -568,6 +568,4 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " colorscheme hybrid
 colorscheme candycode
 
-
 let g:syntastic_javascript_checkers = ['eslint']
-
