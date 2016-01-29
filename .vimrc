@@ -76,7 +76,6 @@ Plugin 'goatslacker/mango.vim'
 
 " Other
 Plugin 'Rename'
-Plugin 'wakatime/vim-wakatime'
 Plugin 'skwp/vim-html-escape'
 " :Rename
 "Plugin 'rename.vim'
