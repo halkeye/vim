@@ -24,7 +24,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
 
 " Old ones
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 
 " Programming
 Plugin 'jQuery'
