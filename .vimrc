@@ -24,7 +24,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
 
 " Old ones
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 
 " Programming
 Plugin 'jQuery'
@@ -77,7 +77,6 @@ Plugin 'goatslacker/mango.vim'
 
 " Other
 Plugin 'Rename'
-Plugin 'wakatime/vim-wakatime'
 Plugin 'skwp/vim-html-escape'
 " :Rename
 "Plugin 'rename.vim'
@@ -328,10 +327,6 @@ nmap <Leader>px :%!xmllint --format -<CR>
 "set laststatus=2
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
-
-"" use mouse for navigation
-set mouse=n
-
 """" <Leader>dd = Data::Dumper::Dumper($1);
 function! GetVisual() range
     let reg_save = getreg('"')
@@ -486,8 +481,6 @@ inoremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
 
 let tlist_perl_settings  = 'perl;c:constants;l:labels;p:package;s:subroutines;d:POD'
 
-" if $TERM=screen then
-set ttymouse=xterm
 nmap <silent> <Leader>tt :CommandT<CR>
 
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
@@ -576,6 +569,4 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " colorscheme hybrid
 colorscheme candycode
 
-
 let g:syntastic_javascript_checkers = ['eslint']
-
