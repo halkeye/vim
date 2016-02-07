@@ -147,13 +147,17 @@ set background=dark
 filetype plugin on
 
 " Remember what line number
-set viminfo='10,\"100,:20,%,n~/.viminfo
+if has('vim')
+  set viminfo='10,\"100,:20,%,n~/.viminfo
+end
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endi
 
 "	because we prefer terse error messages,
 set terse
 "	keep the screen tidy
-set redraw optimize
+if has('vim')
+  set redraw optimize
+end
 " use spaces rather then tabs, with a width of 2
 set tabstop=2
 set shiftwidth=2
