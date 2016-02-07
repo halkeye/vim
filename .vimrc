@@ -32,6 +32,7 @@ Plugin 'tpope/vim-rails'
 " http://vimawesome.com/plugin/rails-vim
 
 " Syntax Highlighting/Languages
+Plugin 'isRuslan/vim-es6'
 Plugin 'Handlebars'
 Plugin 'pangloss/vim-javascript'
 "Plugin 'jelera/vim-javascript-syntax
