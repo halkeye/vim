@@ -45,10 +45,8 @@ Plugin 'Handlebars'
 Plugin 'pangloss/vim-javascript'
 "Plugin 'jelera/vim-javascript-syntax
 Plugin 'othree/yajs.vim' " Yet another Javascript Sytnax
-Plugin 'vim-scripts/perl-support.vim'
 Plugin 'nono/vim-handlebars.git'
 Plugin 'vim-scripts/vim-json-bundle.git'
-Plugin 'c9s/perlomni.vim.git'
 Plugin 'kchmck/vim-coffee-script.git'
 "Plugin 'leafgarland/typescript-vim.git'
 Plugin 'mklabs/grunt.vim.git'
@@ -232,11 +230,6 @@ au FileType svn map <Leader>sd :SVNCommitDiff<CR>
 
 map <Leader>dd :SVNVimDiff<CR>
 
-"" Embperl stuff
-augroup filetypedetect
-autocmd! BufNewFile,BufRead *.epl,*.xhtml,*.wml setf embperl
-augroup END
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and backups
@@ -401,37 +394,6 @@ cnoremap <C-K>    <C-U>
 "" \w will switch windows and resize
 noremap <Leader>w <C-W><C-W>:res<cr>
 
-""""""""""""""""""""""""""""""
-" Perl Section
-""""""""""""""""""""""""""""""
-autocmd BufNew,BufRead  *.pl,*.pm   set filetype=perl
-autocmd BufRead            *.pod  set filetype=perl
-autocmd BufNewFile         *.pod  set filetype=perl
-"| call Perl_CommentTemplates("pod")
-autocmd BufNewFile,BufRead *.t    set filetype=perl
-
-function! FileTypePerl()
-    compiler perl
-    " map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
-    " Adding the following to your vimrc file will make POD documentation in Perl modules easier to read:
-    let perl_include_pod=1
-    let g:perldoc_program='/usr/bin/perldoc'
-    set comments=:# cinkeys=0{,0},0),:,!^F,o,O,e
-    set iskeyword+=_
-
-    " Stop the annoying behavior of leaving comments on far left
-    set fo+=r
-
-    " Fix cindent commenting style to support comments on same line
-    set cindent
-    set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
-
-    " only work in 'normal' mode
-    nnoremap <Leader>qt  :%!perltidy -q<cr>
-    " only work in 'visual' mode
-    vnoremap <Leader>qt  :!perltidy  -q<cr>
-endfunction
-
 autocmd BufNewFile,BufRead .jshintrc,*.json set filetype=json
 "autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 function! FileTypeJS()
@@ -487,7 +449,6 @@ endfunction
 autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
 let g:syntastic_java_checkers=['']
 
-autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
 autocmd FileType python call FileTypePython()
@@ -506,8 +467,6 @@ let g:ctags_regenerate=1
 
 noremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
 inoremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
-
-let tlist_perl_settings  = 'perl;c:constants;l:labels;p:package;s:subroutines;d:POD'
 
 nmap <silent> <Leader>tt :CommandT<CR>
 
