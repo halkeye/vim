@@ -20,8 +20,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'neomake/neomake'
+
 " Lets try these out
 Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
+if !has('nvim')
+  Plugin 'janko-m/vim-test'
+  let test#strategy = "dispatch"
+  Plugin 'tpope/vim-dispatch'
+  Plugin 'benmills/vimux'
+endif
 
 " Old ones
 Plugin 'rking/ag.vim'
@@ -58,7 +66,6 @@ Plugin 'kien/rainbow_parentheses.vim'
 
 " GIT SUPPORT
 Plugin 'tpope/vim-fugitive'
-Plugin 'jaxbot/github-issues.vim'
 
 Plugin 'airblade/vim-gitgutter'
 
@@ -85,7 +92,9 @@ Plugin 'taglist.vim'
 Plugin 'taq/vim-git-branch-info'
 Plugin 'tmhedberg/matchit'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'scrooloose/syntastic.git'
+if !has('nvim')
+  "Plugin 'scrooloose/syntastic.git'
+endif
 Plugin 'tpope/vim-unimpaired.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'bronson/vim-trailing-whitespace.git'
@@ -93,22 +102,33 @@ Plugin 'bronson/vim-trailing-whitespace.git'
 Plugin 'Tabular'
 Plugin 'editorconfig/editorconfig-vim.git'
 Plugin 'kien/ctrlp.vim.git'
-Plugin 'mklabs/vim-issues.git'
+"Plugin 'mklabs/vim-issues.git'
 Plugin 'vim-scripts/gitdiff.vim.git'
 Plugin 'bufexplorer.zip'
 " Plugin 'minibufexpl.vim'
 
-Plugin 'Valloric/YouCompleteMe'
-" Ultisnips (compatible with YouCompleteMe):
-Plugin 'SirVer/ultisnips'
+if !has('nvim')
+  Plugin 'Shougo/neocomplete.vim'
+
+  " Plugin 'Valloric/YouCompleteMe'
+  " Ultisnips (compatible with YouCompleteMe):
+  " Plugin 'SirVer/ultisnips'
+else
+  Plugin 'Shougo/deoplete.nvim'
+endif
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+
 "Plugin 'ahayman/vim-nodejs-complete.git'
-Plugin 'mattn/jscomplete-vim.git'
+"Plugin 'mattn/jscomplete-vim.git'
 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 syntax on
+
+autocmd! BufWritePost * Neomake
 
 " Automatically reload .vimrc when changing
 autocmd! bufwritepost .vimrc source %
@@ -411,6 +431,7 @@ function! FileTypePerl()
 endfunction
 
 autocmd BufNewFile,BufRead .jshintrc,*.json set filetype=json
+"autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 function! FileTypeJS()
     "compiler javascript
     set iskeyword-=.
@@ -529,9 +550,6 @@ fun! LoadGitrebaseBindings()
   nnoremap  C :Cycle
 endfun
 
-"------------SYNTASTIC-----------
-let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.json"
-let g:syntastic_python_checkers=['pep8']
 
 "------------Air/Power/Lightline-------
 set laststatus=2
@@ -574,4 +592,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " colorscheme hybrid
 colorscheme candycode
 
+"------------SYNTASTIC-----------
+let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.json"
+let g:syntastic_python_checkers=['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_html_tidy_exec = '/usr/local/bin/tidy'
+
