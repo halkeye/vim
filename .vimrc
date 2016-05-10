@@ -107,6 +107,8 @@ Plugin 'vim-scripts/gitdiff.vim.git'
 Plugin 'bufexplorer.zip'
 " Plugin 'minibufexpl.vim'
 
+Plugin 'godlygeek/csapprox'
+
 if !has('nvim')
   Plugin 'Shougo/neocomplete.vim'
 
