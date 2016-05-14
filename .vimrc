@@ -27,31 +27,17 @@ Plugin 'fntlnz/atags.vim'
 
 " Lets try these out
 Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
-if !has('nvim')
-  Plugin 'janko-m/vim-test'
-  let test#strategy = "dispatch"
-  Plugin 'tpope/vim-dispatch'
-  Plugin 'benmills/vimux'
-endif
 
 " Old ones
 Plugin 'rking/ag.vim'
-
-" Programming
-Plugin 'jQuery'
-Plugin 'tpope/vim-rails'
-" http://vimawesome.com/plugin/rails-vim
 
 " Syntax Highlighting/Languages
 Plugin 'isRuslan/vim-es6'
 Plugin 'Handlebars'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'jelera/vim-javascript-syntax
 Plugin 'othree/yajs.vim' " Yet another Javascript Sytnax
-Plugin 'vim-scripts/perl-support.vim'
 Plugin 'nono/vim-handlebars.git'
 Plugin 'vim-scripts/vim-json-bundle.git'
-Plugin 'c9s/perlomni.vim.git'
 Plugin 'kchmck/vim-coffee-script.git'
 "Plugin 'leafgarland/typescript-vim.git'
 Plugin 'mklabs/grunt.vim.git'
@@ -79,12 +65,7 @@ Plugin 'itchyny/lightline.vim'
 
 Plugin 'vim-scripts/Wombat'
 Plugin 'junegunn/seoul256.vim'
-Plugin 'vim-scripts/Relaxed-Green'
-Plugin 'vim-scripts/rastafari.vim'
-Plugin 'vim-scripts/moria'
-Plugin 'mitsuhiko/fruity-vim-colorscheme'
 Plugin 'vim-scripts/candycode.vim'
-Plugin 'goatslacker/mango.vim'
 
 " Other
 Plugin 'Rename'
@@ -114,19 +95,13 @@ Plugin 'godlygeek/csapprox'
 
 if !has('nvim')
   Plugin 'Shougo/neocomplete.vim'
-
-  " Plugin 'Valloric/YouCompleteMe'
-  " Ultisnips (compatible with YouCompleteMe):
-  " Plugin 'SirVer/ultisnips'
 else
   Plugin 'Shougo/deoplete.nvim'
 endif
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 
-"Plugin 'ahayman/vim-nodejs-complete.git'
-"Plugin 'mattn/jscomplete-vim.git'
-
+Plugin 'mhartington/oceanic-next'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -167,7 +142,6 @@ else
     call LoadHomeAuthor()
 endif
 
-"colorscheme default
 set background=dark
 filetype plugin on
 
@@ -234,11 +208,6 @@ au BufNewFile,BufRead  svn-commit.* setf svn
 au FileType svn map <Leader>sd :SVNCommitDiff<CR>
 
 map <Leader>dd :SVNVimDiff<CR>
-
-"" Embperl stuff
-augroup filetypedetect
-autocmd! BufNewFile,BufRead *.epl,*.xhtml,*.wml setf embperl
-augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -351,13 +320,6 @@ nmap <Leader>px :%!xmllint --format -<CR>
 " \ "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
 " \ --noout -<CR>
 
-
-"colorscheme rastafari
-
-"set laststatus=2
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-
-"""" <Leader>dd = Data::Dumper::Dumper($1);
 function! GetVisual() range
     let reg_save = getreg('"')
     let regtype_save = getregtype('"')
@@ -403,37 +365,6 @@ cnoremap <C-K>    <C-U>
 
 "" \w will switch windows and resize
 noremap <Leader>w <C-W><C-W>:res<cr>
-
-""""""""""""""""""""""""""""""
-" Perl Section
-""""""""""""""""""""""""""""""
-autocmd BufNew,BufRead  *.pl,*.pm   set filetype=perl
-autocmd BufRead            *.pod  set filetype=perl
-autocmd BufNewFile         *.pod  set filetype=perl
-"| call Perl_CommentTemplates("pod")
-autocmd BufNewFile,BufRead *.t    set filetype=perl
-
-function! FileTypePerl()
-    compiler perl
-    " map <buffer> <leader><space> <leader>cd:w<cr>:make %<cr>
-    " Adding the following to your vimrc file will make POD documentation in Perl modules easier to read:
-    let perl_include_pod=1
-    let g:perldoc_program='/usr/bin/perldoc'
-    set comments=:# cinkeys=0{,0},0),:,!^F,o,O,e
-    set iskeyword+=_
-
-    " Stop the annoying behavior of leaving comments on far left
-    set fo+=r
-
-    " Fix cindent commenting style to support comments on same line
-    set cindent
-    set cinkeys=0{,0},!^F,o,O,e " default is: 0{,0},0),:,0#,!^F,o,O,e
-
-    " only work in 'normal' mode
-    nnoremap <Leader>qt  :%!perltidy -q<cr>
-    " only work in 'visual' mode
-    vnoremap <Leader>qt  :!perltidy  -q<cr>
-endfunction
 
 autocmd BufNewFile,BufRead .jshintrc,*.json set filetype=json
 "autocmd BufNewFile,BufRead *.es6 set filetype=javascript
@@ -490,7 +421,6 @@ endfunction
 autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
 let g:syntastic_java_checkers=['']
 
-autocmd FileType perl call FileTypePerl()
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
 autocmd FileType python call FileTypePython()
@@ -510,8 +440,6 @@ let g:ctags_regenerate=1
 noremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
 inoremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
 
-let tlist_perl_settings  = 'perl;c:constants;l:labels;p:package;s:subroutines;d:POD'
-
 nmap <silent> <Leader>tt :CommandT<CR>
 
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
@@ -524,20 +452,6 @@ set nonumber
 
 nmap <silent> <Leader>nt :NERDTreeToggle<CR>
 nmap <Leader>p :set paste!<CR>
-
-" https://github.com/altercation/vim-colors-solarized
-"colorscheme solarized
-if has('gui_running')
-    let g:solarized_termtrans=1
-endif
-if !has('gui_running')
-  set t_Co=256
-endif
-
-" for power line
-"set laststatus=2   " Always show the statusline
-"set encoding=utf-8 " Necessary to show Unicode glyphs
-"let g:Powerline_colorscheme = 'skwp'
 
 " http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
@@ -558,7 +472,6 @@ endfun
 
 "------------Air/Power/Lightline-------
 set laststatus=2
-colorscheme darkblue
 "let g:lightline = { 'colorscheme': 'solarized', }
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -594,9 +507,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" colorscheme hybrid
-colorscheme candycode
-
 "------------SYNTASTIC-----------
 let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.json"
 let g:syntastic_python_checkers=['flake8']
@@ -615,3 +525,7 @@ set mouse=
 
 "------- neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
+
+"colorscheme candycode
+colorscheme OceanicNext
+set background=dark
