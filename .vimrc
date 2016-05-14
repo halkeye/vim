@@ -600,3 +600,5 @@ let g:syntastic_python_checkers=['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_exec = '/usr/local/bin/tidy'
 
+"------- neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
