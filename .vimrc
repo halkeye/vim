@@ -22,9 +22,6 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'neomake/neomake'
 
-" Ctags everything
-Plugin 'fntlnz/atags.vim'
-
 " Lets try these out
 Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
 
@@ -512,13 +509,6 @@ let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.jso
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_exec = '/usr/local/bin/tidy'
-
-" Generate tags only for files that are not in .gitignore (requires AG)
-let g:atags_build_commands_list = [
-    \ 'ag -g "" | ctags -L - --fields=+l -f tags.tmp',
-    \ 'awk "length($0) < 400" tags.tmp > tags',
-    \ 'rm tags.tmp'
-    \ ]
 
 " Neovim enables mouse mode by default
 set mouse=
