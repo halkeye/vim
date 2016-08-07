@@ -83,7 +83,7 @@ Plugin 'bronson/vim-trailing-whitespace.git'
 " :FixWhitespace
 Plugin 'Tabular'
 Plugin 'editorconfig/editorconfig-vim.git'
-Plugin 'kien/ctrlp.vim.git'
+Plugin 'ctrlpvim/ctrlp.vim.git'
 "Plugin 'mklabs/vim-issues.git'
 Plugin 'vim-scripts/gitdiff.vim.git'
 Plugin 'bufexplorer.zip'
