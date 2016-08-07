@@ -36,6 +36,7 @@ Plugin 'othree/yajs.vim' " Yet another Javascript Sytnax
 Plugin 'nono/vim-handlebars.git'
 Plugin 'vim-scripts/vim-json-bundle.git'
 Plugin 'kchmck/vim-coffee-script.git'
+Plugin 'vim-scripts/indentpython.vim'
 "Plugin 'leafgarland/typescript-vim.git'
 Plugin 'mklabs/grunt.vim.git'
 Plugin 'othree/html5.vim.git'
