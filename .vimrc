@@ -29,7 +29,7 @@ Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
 Plugin 'rking/ag.vim'
 
 " Syntax Highlighting/Languages
-Plugin 'isRuslan/vim-es6'
+"Plugin 'isRuslan/vim-es6'
 Plugin 'Handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/yajs.vim' " Yet another Javascript Sytnax
@@ -505,6 +505,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+autocmd BufRead  Jenkinsfile set filetype=groovy
+autocmd BufRead *.es6 set filetype=javascript
+
 "------------SYNTASTIC-----------
 let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.json"
 let g:syntastic_python_checkers=['flake8']
@@ -516,6 +519,8 @@ set mouse=
 
 "------- neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_open_list = 2
+
 
 "colorscheme candycode
 colorscheme OceanicNext
