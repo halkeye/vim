@@ -523,5 +523,6 @@ let g:neomake_open_list = 2
 
 
 "colorscheme candycode
-colorscheme OceanicNext
+"colorscheme OceanicNext
+colorscheme hybrid
 set background=dark
