@@ -309,10 +309,6 @@ nmap <Leader>px :%!xmllint --format -<CR>
 "set laststatus=2
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
-
-"" use mouse for navigation
-set mouse=n
-
 """" <Leader>dd = Data::Dumper::Dumper($1);
 function! GetVisual() range
     let reg_save = getreg('"')
