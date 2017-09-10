@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+
 filetype off                  " required
 
 "let g:ctrlp_custom_ignore = 'vendor\/bundle|coverage|test\/reports|bower_components|app\/bower_components'
@@ -32,6 +33,7 @@ Plugin 'rking/ag.vim'
 "Plugin 'isRuslan/vim-es6'
 Plugin 'Handlebars'
 Plugin 'pangloss/vim-javascript'
+Plugin 'sbdchd/neoformat'
 Plugin 'othree/yajs.vim' " Yet another Javascript Sytnax
 Plugin 'nono/vim-handlebars.git'
 Plugin 'vim-scripts/vim-json-bundle.git'
@@ -47,6 +49,9 @@ Plugin 'maven-plugin'
 Plugin 'fatih/vim-go'
 
 Plugin 'mxw/vim-jsx'
+
+Plugin 'prettier/vim-prettier'
+Plugin 'josudoey/vim-eslint-fix'
 
 Plugin 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
@@ -509,7 +514,7 @@ autocmd BufRead  Jenkinsfile set filetype=groovy
 autocmd BufRead *.es6 set filetype=javascript
 
 "------------SYNTASTIC-----------
-let g:syntastic_coffee_coffeelint_args = "--csv --file $HOME/.vim/coffeelint.json"
+let g:syntastic_coffee_coffeelint_args = "--reporter=csv --file $HOME/.vim/coffeelint.json"
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_exec = '/usr/local/bin/tidy'
@@ -523,6 +528,7 @@ let g:neomake_open_list = 2
 
 
 "colorscheme candycode
-"colorscheme OceanicNext
-colorscheme hybrid
+colorscheme OceanicNext
+"colorscheme hybrid
+set background=light
 set background=dark
