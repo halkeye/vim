@@ -62,12 +62,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 " Color Schemes
-Plugin 'w0ng/vim-hybrid.git'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'itchyny/lightline.vim'
 
-Plugin 'vim-scripts/Wombat'
-Plugin 'junegunn/seoul256.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'lifepillar/vim-solarized8'
+Plugin 'itchyny/lightline.vim'
 Plugin 'vim-scripts/candycode.vim'
 
 " Other
@@ -124,29 +122,6 @@ set tags+=gems.tags
 
 " Old Config Starts here
 let g:Perl_PerlTags        = 'enabled'
-
-function! LoadWorkAuthor()
-    let g:Perl_AuthorName      = 'Gavin Mogan'
-    let g:Perl_AuthorRef       = 'Gavin Mogan'
-    let g:Perl_Email           = 'gavin.mogan@telus.com'
-    let g:Perl_Company         = 'TELUS'
-endfunction
-
-function! LoadHomeAuthor()
-    let g:Perl_AuthorName      = 'Gavin Mogan'
-    let g:Perl_AuthorRef       = 'Gavin Mogan'
-    let g:Perl_Email           = 'gavin@kodekoan.com'
-    let g:Perl_Company         = 'KodeKoan'
-endfunction
-
-if $USER != 'halkeye'
-    call LoadWorkAuthor()
-else
-    call LoadHomeAuthor()
-endif
-
-set background=dark
-filetype plugin on
 
 " Remember what line number
 if has('vim')
@@ -285,11 +260,6 @@ set nowrap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
    """"""""""""""""""""""""""""""
-   " VIM
-   """"""""""""""""""""""""""""""
-   autocmd FileType vim map <buffer> <leader><space> :w!<cr>:source %<cr>
-
-   """"""""""""""""""""""""""""""
    " HTML related
    """"""""""""""""""""""""""""""
    " HTML entities - used by xml edit plugin
@@ -312,16 +282,6 @@ set nowrap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Remove the Windows ^M
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" XML
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.docbook setf docbk
-nmap <Leader>px :%!xmllint --format -<CR>
-"nmap <Leader>l <Leader>cd:%w !xmllint --valid --noout -<CR>
-"nmap <Leader>d4 :%w !xmllint --dtdvalid
-" \ "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
-" \ --noout -<CR>
 
 function! GetVisual() range
     let reg_save = getreg('"')
@@ -443,8 +403,6 @@ let g:ctags_regenerate=1
 noremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
 inoremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
 
-nmap <silent> <Leader>tt :CommandT<CR>
-
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
 " One way to make sure to remove all training whitespace in a file is to set
 " an autocmd in your .vimrc file. Everytime the user issue a :w command, Vim
@@ -460,18 +418,6 @@ nmap <Leader>p :set paste!<CR>
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
 highlight EOLWS ctermbg=red guibg=red
-
-" http://www.blaulabs.de/2012/12/19/hidden-gems-in-vimruntime/
-augroup vim_config
-  autocmd FileType gitrebase call LoadGitrebaseBindings()
-augroup END
-
-fun! LoadGitrebaseBindings()
-  nnoremap  P :Pick
-  nnoremap  S :Squash
-  nnoremap  C :Cycle
-endfun
-
 
 "------------Air/Power/Lightline-------
 set laststatus=2
@@ -527,8 +473,7 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_open_list = 2
 
 
-"colorscheme candycode
-colorscheme OceanicNext
-"colorscheme hybrid
 set background=light
 set background=dark
+"colorscheme OceanicNext
+colorscheme gruvbox
