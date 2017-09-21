@@ -472,6 +472,12 @@ set mouse=
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_open_list = 2
 
+"------- neoformat
+let g:neoformat_enabled_javascript = ['prettiereslint']
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
 
 set background=light
 set background=dark
