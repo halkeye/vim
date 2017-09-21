@@ -22,6 +22,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'neomake/neomake'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " Lets try these out
 Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
