@@ -485,3 +485,6 @@ set background=light
 set background=dark
 "colorscheme OceanicNext
 colorscheme gruvbox
+
+set number
+set cursorline
