@@ -25,6 +25,9 @@ Plugin 'neomake/neomake'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
+" Test those things
+Plugin 'janko-m/vim-test'
+
 " Lets try these out
 Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
 
@@ -46,11 +49,12 @@ Plugin 'mklabs/grunt.vim.git'
 Plugin 'othree/html5.vim.git'
 Plugin 'plasticboy/vim-markdown.git'
 Plugin 'rodjek/vim-puppet'
-Plugin 'jnwhiteh/vim-golang'
+"Plugin 'jnwhiteh/vim-golang'
 Plugin 'maven-plugin'
 Plugin 'fatih/vim-go'
 
 Plugin 'mxw/vim-jsx'
+Plugin 'alampros/vim-styled-jsx'
 
 Plugin 'prettier/vim-prettier'
 Plugin 'josudoey/vim-eslint-fix'
@@ -488,3 +492,13 @@ colorscheme gruvbox
 
 set number
 set cursorline
+
+"---------- vim-test
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+"let test#strategy = "tmux"
+
