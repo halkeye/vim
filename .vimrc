@@ -53,6 +53,8 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'maven-plugin'
 Plugin 'fatih/vim-go'
 
+Plugin 'scrooloose/nerdcommenter'
+
 Plugin 'mxw/vim-jsx'
 Plugin 'alampros/vim-styled-jsx'
 
