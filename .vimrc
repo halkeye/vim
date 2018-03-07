@@ -21,7 +21,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'neomake/neomake'
+"Plugin 'neomake/neomake'
+"Plugin 'sbdchd/neoformat'
+Plugin 'w0rp/ale'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
@@ -38,7 +40,6 @@ Plugin 'rking/ag.vim'
 "Plugin 'isRuslan/vim-es6'
 Plugin 'Handlebars'
 Plugin 'pangloss/vim-javascript'
-Plugin 'sbdchd/neoformat'
 Plugin 'othree/yajs.vim' " Yet another Javascript Sytnax
 Plugin 'nono/vim-handlebars.git'
 Plugin 'vim-scripts/vim-json-bundle.git'
@@ -58,8 +59,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'mxw/vim-jsx'
 Plugin 'alampros/vim-styled-jsx'
 
-Plugin 'prettier/vim-prettier'
-Plugin 'josudoey/vim-eslint-fix'
+"Plugin 'prettier/vim-prettier'
+"Plugin 'josudoey/vim-eslint-fix'
 
 Plugin 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
@@ -85,9 +86,6 @@ Plugin 'taglist.vim'
 Plugin 'taq/vim-git-branch-info'
 Plugin 'tmhedberg/matchit'
 Plugin 'scrooloose/nerdtree.git'
-if !has('nvim')
-  "Plugin 'scrooloose/syntastic.git'
-endif
 Plugin 'tpope/vim-unimpaired.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'bronson/vim-trailing-whitespace.git'
@@ -116,8 +114,6 @@ Plugin 'mhartington/oceanic-next'
 call vundle#end()            " required
 filetype plugin indent on    " required
 syntax on
-
-autocmd! BufWritePost * Neomake
 
 " Automatically reload .vimrc when changing
 autocmd! bufwritepost .vimrc source %
@@ -390,7 +386,6 @@ function! FileTypeGo()
 endfunction
 
 autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
-let g:syntastic_java_checkers=['']
 
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
@@ -454,8 +449,6 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': [],
   \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
   \ }
-"------------Syntastic needs to ignore role attribute for divs---------
-let g:syntastic_html_tidy_ignore_errors = [ "<div> proprietary attribute \"role\"" ]
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -467,25 +460,44 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd BufRead  Jenkinsfile set filetype=groovy
 autocmd BufRead *.es6 set filetype=javascript
 
-"------------SYNTASTIC-----------
-let g:syntastic_coffee_coffeelint_args = "--reporter=csv --file $HOME/.vim/coffeelint.json"
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_tidy_exec = '/usr/local/bin/tidy'
 
 " Neovim enables mouse mode by default
 set mouse=
 
-"------- neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_open_list = 2
+" "------- neomake
+" let g:neomake_javascript_enabled_makers = ['eslint_d']
+" let g:neomake_open_list = 2
+" " When writing a buffer.
+" call neomake#configure#automake('w')
+" " When writing a buffer, and on normal mode changes (after 750ms).
+" call neomake#configure#automake('nw', 750)
+" " When reading a buffer (after 1s), and when writing.
+" call neomake#configure#automake('rw', 1000)
+ 
+"------- ALE linter stuff thing
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+let g:ale_fix_on_save = 1
+" Put this in vimrc or a plugin file of your own.
+" After this is configured, :ALEFix will try and fix your JS code with ESLint.
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\ }
+let g:ale_fixers = {
+\   'javascript': ['prettier_eslint'],
+\ }
+let g:ale_javascript_eslint_executable = 'eslint_d'
+let g:ale_javascript_eslint_use_global = 1
+let g:ale_javascript_prettier_eslint_executable = 'prettier-eslint'
+let g:ale_javascript_prettier_eslint_use_global = 1
+let g:ale_fix_on_save = 1
 
 "------- neoformat
-let g:neoformat_enabled_javascript = ['prettiereslint']
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+" let g:neoformat_enabled_javascript = ['prettier-eslint', 'eslint_d']
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre * undojoin | Neoformat
+" augroup END
 
 set background=light
 set background=dark
