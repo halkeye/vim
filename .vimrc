@@ -4,7 +4,7 @@ filetype off                  " required
 
 "let g:ctrlp_custom_ignore = 'vendor\/bundle|coverage|test\/reports|bower_components|app\/bower_components'
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '.git$|vendor|.hg$|.svn$|.yardoc|public/images|public/system|data|log|tmp$|bower_components|node_modules|tmp|dist|target',
+      \ 'dir':  '.git$|vendor|.hg$|.svn$|.yardoc|public/images|public/system|data|log|tmp$|bower_components|node_modules|tmp|dist|target|coverage',
       \ 'file': '.exe$|.so$|.dat$'
       \ }
 "let g:NERDTreeIgnore=['~$', 'vendor', 'bower_components','node_modules']
