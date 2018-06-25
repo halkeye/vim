@@ -40,6 +40,7 @@ Plugin 'rking/ag.vim'
 "Plugin 'isRuslan/vim-es6'
 Plugin 'Handlebars'
 Plugin 'pangloss/vim-javascript'
+Plugin 'jparise/vim-graphql'
 Plugin 'othree/yajs.vim' " Yet another Javascript Sytnax
 Plugin 'nono/vim-handlebars.git'
 Plugin 'vim-scripts/vim-json-bundle.git'
