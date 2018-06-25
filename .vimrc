@@ -220,9 +220,6 @@ set t_vb=
 "show matching bracets
 set showmatch
 
-"How many tenths of a second to blink
-set mat=2
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command-line config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
