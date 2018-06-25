@@ -152,9 +152,6 @@ set expandtab
 set textwidth=0
 
 
-" Show line numbers by default
-"set number
-
 " The completion dictionary is provided by Rasmus:
 " http://lerdorf.com/funclist.txt
 set dictionary-=~/symvimny/funclist.txt dictionary+=~/symvimny/funclist.txt
@@ -506,7 +503,6 @@ set background=dark
 "colorscheme OceanicNext
 colorscheme gruvbox
 
-set number
 set cursorline
 
 "---------- vim-test
