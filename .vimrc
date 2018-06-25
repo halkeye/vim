@@ -312,9 +312,7 @@ map Q gq
 """ Tab stuff
 "Tab configuration
 "map <leader>tn :tabnew %<cr>
-map <leader>te :tabedit 
-map <leader>tt :TlistToggle<cr>
-map <leader>tc :tabclose<cr>
+map <leader>te :tabedit
 map <leader>tm :tabmove
 map <leader>tn :tabnew
 
@@ -487,7 +485,9 @@ let g:ale_javascript_eslint_executable = 'eslint_d'
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_javascript_prettier_eslint_executable = 'prettier-eslint'
 let g:ale_javascript_prettier_eslint_use_global = 1
+let g:ale_markdown_mdl_executable = expand("$HOME/bin/mdl")
 let g:ale_fix_on_save = 1
+
 
 "------- neoformat
 " let g:neoformat_enabled_javascript = ['prettier-eslint', 'eslint_d']
