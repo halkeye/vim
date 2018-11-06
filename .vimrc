@@ -312,9 +312,9 @@ map Q gq
 """ Tab stuff
 "Tab configuration
 "map <leader>tn :tabnew %<cr>
-map <leader>te :tabedit
-map <leader>tm :tabmove
-map <leader>tn :tabnew
+map <leader>te :tabedit<space>
+map <leader>tm :tabmove<space>
+map <leader>tn :tabnew<space>
 
 set stal=1
 
