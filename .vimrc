@@ -54,6 +54,7 @@ Plugin 'rodjek/vim-puppet'
 "Plugin 'jnwhiteh/vim-golang'
 Plugin 'maven-plugin'
 Plugin 'fatih/vim-go'
+Plugin 'cespare/vim-toml'
 
 Plugin 'scrooloose/nerdcommenter'
 
