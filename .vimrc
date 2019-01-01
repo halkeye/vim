@@ -313,7 +313,7 @@ map Q gq
 """ Tab stuff
 "Tab configuration
 "map <leader>tn :tabnew %<cr>
-map <leader>te :tabedit
+map <leader>te :tabedit 
 map <leader>tm :tabmove
 map <leader>tn :tabnew
 
