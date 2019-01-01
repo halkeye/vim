@@ -67,6 +67,9 @@ Plugin 'alampros/vim-styled-jsx'
 Plugin 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
 
+" Lets enable :CarbonNowSh for some source code to make a graphic
+Plugin 'kristijanhusak/vim-carbon-now-sh'
+
 " GIT SUPPORT
 Plugin 'tpope/vim-fugitive'
 
