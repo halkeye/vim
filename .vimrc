@@ -479,7 +479,7 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \ }
 let g:ale_fixers = {
-\   'javascript': ['prettier_eslint'],
+\   'javascript': ['eslint'],
 \   'python': ['autopep8'],
 \ }
 let g:ale_javascript_eslint_executable = 'eslint_d'
