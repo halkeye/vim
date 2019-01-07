@@ -94,8 +94,6 @@ Plugin 'scrooloose/nerdtree.git'
 Plugin 'tpope/vim-unimpaired.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'bronson/vim-trailing-whitespace.git'
-" :FixWhitespace
-Plugin 'Tabular'
 Plugin 'editorconfig/editorconfig-vim.git'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 "Plugin 'mklabs/vim-issues.git'
@@ -110,9 +108,6 @@ if !has('nvim')
 else
   Plugin 'Shougo/deoplete.nvim'
 endif
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-
 Plugin 'mhartington/oceanic-next'
 
 " All of your Plugins must be added before the following line
