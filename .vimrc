@@ -526,3 +526,5 @@ nmap <C-ScrollWheelLeft> <nop>
 nmap <ScrollWheelRight> <nop>
 nmap <S-ScrollWheelRight> <nop>
 nmap <C-ScrollWheelRight> <nop>
+
+set guicursor=
