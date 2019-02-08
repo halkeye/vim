@@ -1,3 +1,14 @@
+" ----------------------------------------------------------------------------
+"   Plug
+" ----------------------------------------------------------------------------
+
+" Install vim-plug if we don't already have it
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 set nocompatible              " be iMproved, required
 
 filetype off                  " required
@@ -15,104 +26,107 @@ set wildignore+=*\tmp\**
 set wildignore+=*\dist\**
 set wildignore+=*\target\**
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-"Plugin 'neomake/neomake'
-"Plugin 'sbdchd/neoformat'
-Plugin 'w0rp/ale'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+"Plug 'neomake/neomake'
+"Plug 'sbdchd/neoformat'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Test those things
-Plugin 'janko-m/vim-test'
+Plug 'janko-m/vim-test'
 
 " Lets try these out
-Plugin 'http://github.com/rstacruz/sparkup.git', {'rtp': 'vim/'}
+Plug 'http://github.com/rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Old ones
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 
 " Syntax Highlighting/Languages
-"Plugin 'isRuslan/vim-es6'
-Plugin 'Handlebars'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jparise/vim-graphql'
-Plugin 'othree/yajs.vim' " Yet another Javascript Sytnax
-Plugin 'nono/vim-handlebars.git'
-Plugin 'vim-scripts/vim-json-bundle.git'
-Plugin 'kchmck/vim-coffee-script.git'
-Plugin 'vim-scripts/indentpython.vim'
-"Plugin 'leafgarland/typescript-vim.git'
-Plugin 'mklabs/grunt.vim.git'
-Plugin 'othree/html5.vim.git'
-Plugin 'plasticboy/vim-markdown.git'
-Plugin 'rodjek/vim-puppet'
-"Plugin 'jnwhiteh/vim-golang'
-Plugin 'maven-plugin'
-Plugin 'fatih/vim-go'
-Plugin 'cespare/vim-toml'
+"Plug 'isRuslan/vim-es6'
+Plug 'vim-scripts/Handlebars'
+Plug 'pangloss/vim-javascript'
+Plug 'jparise/vim-graphql'
+Plug 'othree/yajs.vim' " Yet another Javascript Sytnax
+Plug 'nono/vim-handlebars'
+Plug 'vim-scripts/vim-json-bundle'
+Plug 'kchmck/vim-coffee-script'
+Plug 'vim-scripts/indentpython.vim'
+"Plug 'leafgarland/typescript-vim'
+Plug 'mklabs/grunt.vim'
+Plug 'othree/html5.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'rodjek/vim-puppet'
+"Plug 'jnwhiteh/vim-golang'
+Plug 'vim-scripts/maven-plugin'
+Plug 'fatih/vim-go'
+Plug 'cespare/vim-toml'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
 
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
-Plugin 'mxw/vim-jsx'
-Plugin 'alampros/vim-styled-jsx'
+Plug 'mxw/vim-jsx'
+Plug 'alampros/vim-styled-jsx'
 
-"Plugin 'prettier/vim-prettier'
-"Plugin 'josudoey/vim-eslint-fix'
+"Plug 'prettier/vim-prettier'
+"Plug 'josudoey/vim-eslint-fix'
 
-Plugin 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
 
 " Lets enable :CarbonNowSh for some source code to make a graphic
-Plugin 'kristijanhusak/vim-carbon-now-sh'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 
 " GIT SUPPORT
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " Color Schemes
 
-Plugin 'morhetz/gruvbox'
-Plugin 'lifepillar/vim-solarized8'
-Plugin 'itchyny/lightline.vim'
-Plugin 'vim-scripts/candycode.vim'
+Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-solarized8'
+Plug 'itchyny/lightline.vim'
+Plug 'vim-scripts/candycode.vim'
 
 " Other
-Plugin 'Rename'
-Plugin 'skwp/vim-html-escape'
+Plug 'vim-scripts/Rename'
+Plug 'skwp/vim-html-escape'
 " :Rename
-"Plugin 'rename.vim'
-Plugin 'taglist.vim'
-Plugin 'taq/vim-git-branch-info'
-Plugin 'tmhedberg/matchit'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'tpope/vim-unimpaired.git'
-Plugin 'ervandew/supertab.git'
-Plugin 'bronson/vim-trailing-whitespace.git'
-Plugin 'editorconfig/editorconfig-vim.git'
-Plugin 'ctrlpvim/ctrlp.vim.git'
-"Plugin 'mklabs/vim-issues.git'
-Plugin 'vim-scripts/gitdiff.vim.git'
-Plugin 'bufexplorer.zip'
-" Plugin 'minibufexpl.vim'
+"Plug 'rename.vim'
+Plug 'vim-scripts/taglist.vim'
+Plug 'taq/vim-git-branch-info'
+Plug 'tmhedberg/matchit'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-unimpaired'
+Plug 'ervandew/supertab'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'mklabs/vim-issues'
+Plug 'vim-scripts/gitdiff.vim'
+Plug 'vim-scripts/bufexplorer.zip'
+" Plug 'minibufexpl.vim'
 
-Plugin 'godlygeek/csapprox'
+Plug 'godlygeek/csapprox'
 
 if !has('nvim')
-  Plugin 'Shougo/neocomplete.vim'
+  Plug 'Shougo/neocomplete.vim'
 else
-  Plugin 'Shougo/deoplete.nvim'
+   " For async completion
+  Plug 'Shougo/deoplete.nvim'
+ " For Denite features
+  Plug 'Shougo/denite.nvim'
+  Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
+  let g:deoplete#enable_at_startup = 1
 endif
-Plugin 'mhartington/oceanic-next'
+Plug 'mhartington/oceanic-next'
 
+filetype plugin indent on                   " required!
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 syntax on
 
 " Automatically reload .vimrc when changing
