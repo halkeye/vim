@@ -28,8 +28,6 @@ set wildignore+=*\target\**
 
 call plug#begin('~/.vim/plugged')
 
-"Plug 'neomake/neomake'
-"Plug 'sbdchd/neoformat'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -70,9 +68,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'mxw/vim-jsx'
 Plug 'alampros/vim-styled-jsx'
 
-"Plug 'prettier/vim-prettier'
-"Plug 'josudoey/vim-eslint-fix'
-
 Plug 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
 
@@ -85,11 +80,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Color Schemes
-
+Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-Plug 'lifepillar/vim-solarized8'
-Plug 'itchyny/lightline.vim'
 Plug 'vim-scripts/candycode.vim'
+
+" Lets see a nice status line
+"Plug 'itchyny/lightline.vim'
 
 " Other
 Plug 'vim-scripts/Rename'
@@ -115,12 +111,12 @@ Plug 'godlygeek/csapprox'
 if !has('nvim')
   Plug 'Shougo/neocomplete.vim'
 else
-   " For async completion
-  Plug 'Shougo/deoplete.nvim'
- " For Denite features
-  Plug 'Shougo/denite.nvim'
-  Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
-  let g:deoplete#enable_at_startup = 1
+"   " For async completion
+"  Plug 'Shougo/deoplete.nvim'
+" " For Denite features
+"  Plug 'Shougo/denite.nvim'
+"  Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
+"  let g:deoplete#enable_at_startup = 1
 endif
 Plug 'mhartington/oceanic-next'
 
@@ -511,8 +507,7 @@ let g:ale_fix_on_save = 1
 
 set background=light
 set background=dark
-"colorscheme OceanicNext
-colorscheme gruvbox
+colorscheme candycode
 
 set cursorline
 
@@ -542,6 +537,8 @@ nmap <S-ScrollWheelRight> <nop>
 nmap <C-ScrollWheelRight> <nop>
 
 set guicursor=
+" Workaround some broken plugins which set guicursor indiscriminately.
+autocmd OptionSet guicursor noautocmd set guicursor=
 
 if ! has('gui_running')
   set ttimeoutlen=10
