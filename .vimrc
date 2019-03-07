@@ -63,7 +63,7 @@ Plug 'vim-scripts/maven-plugin'
 Plug 'fatih/vim-go'
 Plug 'cespare/vim-toml'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': ':install.sh', 'for': 'typescript'}
+Plug 'mhartington/nvim-typescript', {'do': ':./install.sh', 'for': 'typescript'}
 
 Plug 'scrooloose/nerdcommenter'
 
