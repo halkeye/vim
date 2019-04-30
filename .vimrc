@@ -57,9 +57,8 @@ Plug 'mklabs/grunt.vim'
 Plug 'othree/html5.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'rodjek/vim-puppet'
-"Plug 'jnwhiteh/vim-golang'
 Plug 'vim-scripts/maven-plugin'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'cespare/vim-toml'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': ':install.sh', 'for': 'typescript'}
