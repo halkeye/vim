@@ -43,6 +43,7 @@ Plug 'rking/ag.vim'
 
 " Syntax Highlighting/Languages
 "Plug 'isRuslan/vim-es6'
+Plug 'towolf/vim-helm'
 Plug 'vim-scripts/Handlebars'
 Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
