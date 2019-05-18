@@ -48,7 +48,8 @@ Plug 'vim-scripts/Handlebars'
 Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
 Plug 'othree/yajs.vim' " Yet another Javascript Sytnax
-Plug 'nono/vim-handlebars'
+"Plug 'nono/vim-handlebars'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'vim-scripts/vim-json-bundle'
 Plug 'kchmck/vim-coffee-script'
 Plug 'vim-scripts/indentpython.vim'
@@ -62,6 +63,9 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'cespare/vim-toml'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': ':./install.sh', 'for': 'typescript'}
+Plug 'larsbs/vim-xmll'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'JulesWang/css.vim'
 
 Plug 'scrooloose/nerdcommenter'
 
