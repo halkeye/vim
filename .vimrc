@@ -43,11 +43,13 @@ Plug 'rking/ag.vim'
 
 " Syntax Highlighting/Languages
 "Plug 'isRuslan/vim-es6'
+Plug 'towolf/vim-helm'
 Plug 'vim-scripts/Handlebars'
 Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
 Plug 'othree/yajs.vim' " Yet another Javascript Sytnax
-Plug 'nono/vim-handlebars'
+"Plug 'nono/vim-handlebars'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'vim-scripts/vim-json-bundle'
 Plug 'kchmck/vim-coffee-script'
 Plug 'vim-scripts/indentpython.vim'
@@ -56,12 +58,14 @@ Plug 'mklabs/grunt.vim'
 Plug 'othree/html5.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'rodjek/vim-puppet'
-"Plug 'jnwhiteh/vim-golang'
 Plug 'vim-scripts/maven-plugin'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'cespare/vim-toml'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': ':./install.sh'}
+Plug 'larsbs/vim-xmll'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'JulesWang/css.vim'
 
 Plug 'scrooloose/nerdcommenter'
 
@@ -83,6 +87,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/candycode.vim'
+Plug 'larsbs/vimterial_dark'
 
 " Lets see a nice status line
 "Plug 'itchyny/lightline.vim'
