@@ -87,6 +87,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/candycode.vim'
+Plug 'larsbs/vimterial_dark'
 
 " Lets see a nice status line
 "Plug 'itchyny/lightline.vim'
