@@ -61,7 +61,7 @@ Plug 'vim-scripts/maven-plugin'
 Plug 'fatih/vim-go'
 Plug 'cespare/vim-toml'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': ':./install.sh', 'for': 'typescript'}
+Plug 'mhartington/nvim-typescript', {'do': ':./install.sh'}
 
 Plug 'scrooloose/nerdcommenter'
 
@@ -488,6 +488,7 @@ let g:ale_linters = {
 \ }
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
+\   'typescript': ['tslint', 'eslint'],
 \   'python': ['autopep8'],
 \ }
 let g:ale_javascript_eslint_executable = 'eslint_d'
