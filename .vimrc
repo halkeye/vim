@@ -66,6 +66,7 @@ Plug 'mhartington/nvim-typescript', {'do': ':./install.sh', 'for': 'typescript'}
 Plug 'larsbs/vim-xmll'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'JulesWang/css.vim'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 
 Plug 'scrooloose/nerdcommenter'
 
