@@ -541,6 +541,11 @@ nmap <ScrollWheelRight> <nop>
 nmap <S-ScrollWheelRight> <nop>
 nmap <C-ScrollWheelRight> <nop>
 
+" Copy vscode/ideajs/etc mapping for toggling comment
+let g:NERDDefaultAlign = 'left'
+nmap <C-_>   <Plug>NERDCommenterToggle
+vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
+
 set guicursor=
 " Workaround some broken plugins which set guicursor indiscriminately.
 autocmd OptionSet guicursor noautocmd set guicursor=
