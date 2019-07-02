@@ -18,7 +18,6 @@ let g:ctrlp_custom_ignore = {
       \ 'dir':  '.git$|vendor|.hg$|.svn$|.yardoc|public/images|public/system|data|log|tmp$|bower_components|node_modules|tmp|dist|target|coverage',
       \ 'file': '.exe$|.so$|.dat$'
       \ }
-"let g:NERDTreeIgnore=['~$', 'vendor', 'bower_components','node_modules']
 set wildignore+=*\vendor\**
 set wildignore+=*\bower_components\**
 set wildignore+=*\node_modules\**
@@ -101,7 +100,6 @@ Plug 'skwp/vim-html-escape'
 Plug 'vim-scripts/taglist.vim'
 Plug 'taq/vim-git-branch-info'
 Plug 'tmhedberg/matchit'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-unimpaired'
 Plug 'ervandew/supertab'
 Plug 'bronson/vim-trailing-whitespace'
@@ -317,7 +315,6 @@ nnoremap <leader>f ma[[k"xyy`a:echo @x<CR>
 """"""""
 """" Shortcuts
 """"""""
-nnoremap <silent> `1 :NERDTreeToggle<CR>
 nnoremap <silent> `2 :TlistToggle<CR>
 
 " Don't use Ex mode, use Q for formatting
@@ -421,9 +418,6 @@ inoremap <silent> <F11>  <Esc><Esc>:Tlist<CR>
 autocmd BufWritePre *.pp :%s/\s\+$//e
 
 set nonumber
-
-nmap <silent> <Leader>nt :NERDTreeToggle<CR>
-nmap <Leader>p :set paste!<CR>
 
 " http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
