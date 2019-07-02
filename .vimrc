@@ -13,7 +13,7 @@ set nocompatible              " be iMproved, required
 
 filetype off                  " required
 
-"let g:ctrlp_custom_ignore = 'vendor\/bundle|coverage|test\/reports|bower_components|app\/bower_components'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_custom_ignore = {
       \ 'dir':  '.git$|vendor|.hg$|.svn$|.yardoc|public/images|public/system|data|log|tmp$|bower_components|node_modules|tmp|dist|target|coverage',
       \ 'file': '.exe$|.so$|.dat$'
