@@ -53,7 +53,6 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'vim-scripts/vim-json-bundle'
 Plug 'kchmck/vim-coffee-script'
 Plug 'vim-scripts/indentpython.vim'
-"Plug 'leafgarland/typescript-vim'
 Plug 'mklabs/grunt.vim'
 Plug 'othree/html5.vim'
 Plug 'plasticboy/vim-markdown'
@@ -62,10 +61,11 @@ Plug 'vim-scripts/maven-plugin'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'cespare/vim-toml'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': ':./install.sh'}
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'larsbs/vim-xmll'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'JulesWang/css.vim'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 
 Plug 'scrooloose/nerdcommenter'
 
@@ -120,7 +120,6 @@ else
 "  Plug 'Shougo/deoplete.nvim'
 " " For Denite features
 "  Plug 'Shougo/denite.nvim'
-"  Plug 'mhartington/deoplete-typescript', { 'do': 'npm install -g typescript', 'for': 'typescript' }
 "  let g:deoplete#enable_at_startup = 1
 endif
 Plug 'mhartington/oceanic-next'
@@ -541,6 +540,11 @@ nmap <C-ScrollWheelLeft> <nop>
 nmap <ScrollWheelRight> <nop>
 nmap <S-ScrollWheelRight> <nop>
 nmap <C-ScrollWheelRight> <nop>
+
+" Copy vscode/ideajs/etc mapping for toggling comment
+let g:NERDDefaultAlign = 'left'
+nmap <C-_>   <Plug>NERDCommenterToggle
+vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 
 set guicursor=
 " Workaround some broken plugins which set guicursor indiscriminately.
