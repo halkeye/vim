@@ -453,14 +453,14 @@ let g:ctrlp_prompt_mappings = {
   \ }
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-autocmd BufRead  Jenkinsfile set filetype=groovy
-autocmd BufRead *.es6 set filetype=javascript
+"autocmd BufRead  Jenkinsfile set filetype=groovy
+"autocmd BufRead *.es6 set filetype=javascript
 
 
 " Neovim enables mouse mode by default
@@ -508,6 +508,7 @@ let g:ale_fix_on_save = 1
 set background=light
 set background=dark
 colorscheme candycode
+colorscheme vimterial_dark
 
 set cursorline
 
