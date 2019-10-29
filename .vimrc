@@ -506,8 +506,9 @@ let g:ale_fix_on_save = 1
 
 set background=light
 set background=dark
-colorscheme candycode
-colorscheme vimterial_dark
+"colorscheme candycode
+"colorscheme vimterial_dark
+colorscheme OceanicNext
 
 set cursorline
 
