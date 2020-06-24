@@ -65,6 +65,7 @@ Plug 'larsbs/vim-xmll'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'JulesWang/css.vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'aliou/bats.vim'
 
 Plug 'scrooloose/nerdcommenter'
 
