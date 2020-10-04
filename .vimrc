@@ -67,7 +67,7 @@ Plug 'JulesWang/css.vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'aliou/bats.vim'
 
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 
 Plug 'mxw/vim-jsx'
 Plug 'alampros/vim-styled-jsx'
@@ -542,6 +542,8 @@ nmap <C-ScrollWheelRight> <nop>
 let g:NERDDefaultAlign = 'left'
 nmap <C-_>   <Plug>NERDCommenterToggle
 vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
+nmap <C-/>   <Plug>NERDCommenterToggle
+vmap <C-/>   <Plug>NERDCommenterToggle<CR>gv
 
 set guicursor=
 " Workaround some broken plugins which set guicursor indiscriminately.
