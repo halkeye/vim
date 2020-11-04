@@ -13,11 +13,6 @@ set nocompatible              " be iMproved, required
 
 filetype off                  " required
 
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '.git$|vendor|.hg$|.svn$|.yardoc|public/images|public/system|data|log|tmp$|bower_components|node_modules|tmp|dist|target|coverage',
-      \ 'file': '.exe$|.so$|.dat$'
-      \ }
 set wildignore+=*\vendor\**
 set wildignore+=*\bower_components\**
 set wildignore+=*\node_modules\**
@@ -104,7 +99,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'ervandew/supertab'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'mklabs/vim-issues'
 Plug 'vim-scripts/gitdiff.vim'
 Plug 'vim-scripts/bufexplorer.zip'
@@ -445,12 +439,6 @@ let g:lightline = {
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
 
-"------------Make ctrl+p open in new tab---------
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': [],
-  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
-  \ }
-
 " Enable omni completion.
 "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -521,6 +509,12 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
 "let test#strategy = "tmux"
+
+" ctrl+p triggering fzf pls
+nmap <C-P> :FZF<CR>
+let g:fzf_action = {
+  \ 'return': 'tabedit',
+  \ }
 
 " disable scroll weel/trackpad doing stuff -
 " https://superuser.com/questions/610937/how-to-disable-scroll-wheel-in-vim
