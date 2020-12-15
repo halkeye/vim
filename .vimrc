@@ -379,17 +379,12 @@ function! FileTypePython()
   map <Leader>rr :w<CR>:exe ":!python " . getreg("%") . "" <CR>
 endfunction
 
-function! FileTypeGo()
-  map <leader>rr <Plug>(go-run)
-endfunction
-
 autocmd BufNewFile,BufRead *.ejs    set filetype=html.javascript
 
 autocmd FileType javascript call FileTypeJS()
 autocmd FileType php call FileTypePHP()
 autocmd FileType python call FileTypePython()
 autocmd FileType ruby call FileTypeRuby()
-autocmd FileType go call FileTypeGo()
 let g:ShowFuncSortType = "no"
 set iskeyword-=.
 
@@ -453,16 +448,6 @@ let g:lightline = {
 " Neovim enables mouse mode by default
 set mouse=
 
-" "------- neomake
-" let g:neomake_javascript_enabled_makers = ['eslint_d']
-" let g:neomake_open_list = 2
-" " When writing a buffer.
-" call neomake#configure#automake('w')
-" " When writing a buffer, and on normal mode changes (after 750ms).
-" call neomake#configure#automake('nw', 750)
-" " When reading a buffer (after 1s), and when writing.
-" call neomake#configure#automake('rw', 1000)
- 
 "------- ALE linter stuff thing
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
@@ -472,26 +457,23 @@ let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['flake8'],
+\   'ruby': ['rubocop'],
+\   'go': ['gobuild', 'govet'],
 \ }
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'typescript': ['tslint', 'eslint'],
 \   'python': ['autopep8'],
+\   'ruby': ['rubocop'],
+\   'go': ['gofmt', 'goimports', 'trim_whitespace', 'remove_trailing_lines'],
 \ }
 let g:ale_javascript_eslint_executable = 'eslint'
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_javascript_prettier_eslint_executable = 'prettier-eslint'
 let g:ale_javascript_prettier_eslint_use_global = 1
+let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_markdown_mdl_executable = expand("$HOME/bin/mdl")
-let g:ale_fix_on_save = 1
-
-
-"------- neoformat
-" let g:neoformat_enabled_javascript = ['prettier-eslint', 'eslint_d']
-" augroup fmt
-"   autocmd!
-"   autocmd BufWritePre * undojoin | Neoformat
-" augroup END
+let g:ale_go_gobuild_options = '-tags integration'
 
 set background=light
 set background=dark
