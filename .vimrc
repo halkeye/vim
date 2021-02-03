@@ -106,15 +106,14 @@ Plug 'vim-scripts/bufexplorer.zip'
 
 Plug 'godlygeek/csapprox'
 
-if !has('nvim')
-  Plug 'Shougo/neocomplete.vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-"   " For async completion
-"  Plug 'Shougo/deoplete.nvim'
-" " For Denite features
-"  Plug 'Shougo/denite.nvim'
-"  let g:deoplete#enable_at_startup = 1
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
+let g:deoplete#enable_at_startup = 1
 Plug 'mhartington/oceanic-next'
 
 filetype plugin indent on                   " required!
@@ -433,17 +432,6 @@ let g:lightline = {
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
-
-" Enable omni completion.
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-"autocmd BufRead  Jenkinsfile set filetype=groovy
-"autocmd BufRead *.es6 set filetype=javascript
-
 
 " Neovim enables mouse mode by default
 set mouse=
