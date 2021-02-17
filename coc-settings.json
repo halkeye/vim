@@ -1,0 +1,15 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    }
+  },
+  "java.home": "~/.asdf/installs/java/zulu-11.31.11",
+  "diagnostic.enable": false,
+  "diagnostic.messageTarget": "echo",
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.displayByAle": true
+}
