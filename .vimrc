@@ -108,15 +108,14 @@ Plug 'vim-scripts/bufexplorer.zip'
 
 Plug 'godlygeek/csapprox'
 
-if !has('nvim')
-  Plug 'Shougo/neocomplete.vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-"   " For async completion
-"  Plug 'Shougo/deoplete.nvim'
-" " For Denite features
-"  Plug 'Shougo/denite.nvim'
-"  let g:deoplete#enable_at_startup = 1
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
+let g:deoplete#enable_at_startup = 1
 Plug 'mhartington/oceanic-next'
 
 filetype plugin indent on                   " required!
