@@ -348,15 +348,18 @@ let g:ale_fix_on_save = 1
 " Put this in vimrc or a plugin file of your own.
 " After this is configured, :ALEFix will try and fix your JS code with ESLint.
 let g:ale_linters = {
+\   'svelte': ['eslint'],
 \   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
 \   'python': ['flake8'],
 \   'ruby': ['rubocop'],
 \   'go': ['gobuild', 'govet'],
 \   'java': ['checkstyle', 'eclipselsp', 'javac', 'javalsp', 'pmd'],
 \ }
 let g:ale_fixers = {
+\   'svelte': ['eslint'],
 \   'javascript': ['eslint'],
-\   'typescript': ['tslint', 'eslint'],
+\   'typescript': ['eslint'],
 \   'python': ['autopep8'],
 \   'ruby': ['rubocop'],
 \   'go': ['gofmt', 'goimports', 'trim_whitespace', 'remove_trailing_lines'],
