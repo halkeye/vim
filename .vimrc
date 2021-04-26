@@ -22,7 +22,6 @@ set wildignore+=*\target\**
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -37,37 +36,10 @@ Plug 'http://github.com/rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'rking/ag.vim'
 
 " Syntax Highlighting/Languages
-"Plug 'isRuslan/vim-es6'
-Plug 'towolf/vim-helm'
-Plug 'vim-scripts/Handlebars'
-Plug 'pangloss/vim-javascript'
-Plug 'jparise/vim-graphql'
-Plug 'othree/yajs.vim' " Yet another Javascript Sytnax
-"Plug 'nono/vim-handlebars'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'vim-scripts/vim-json-bundle'
-Plug 'kchmck/vim-coffee-script'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'mklabs/grunt.vim'
-Plug 'othree/html5.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'rodjek/vim-puppet'
-Plug 'vim-scripts/maven-plugin'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'cespare/vim-toml'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'larsbs/vim-xmll'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'JulesWang/css.vim'
-Plug 'martinda/Jenkinsfile-vim-syntax'
-Plug 'aliou/bats.vim'
-Plug 'hashivim/vim-terraform'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'preservim/nerdcommenter'
 
-Plug 'mxw/vim-jsx'
-Plug 'alampros/vim-styled-jsx'
 
 Plug 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
@@ -85,6 +57,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/candycode.vim'
 Plug 'larsbs/vimterial_dark'
+Plug 'mhartington/oceanic-next'
 
 " Lets see a nice status line
 "Plug 'itchyny/lightline.vim'
@@ -107,16 +80,6 @@ Plug 'vim-scripts/bufexplorer.zip'
 " Plug 'minibufexpl.vim'
 
 Plug 'godlygeek/csapprox'
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-Plug 'mhartington/oceanic-next'
 
 filetype plugin indent on                   " required!
 " All of your Plugins must be added before the following line
@@ -341,39 +304,6 @@ let g:lightline = {
 " Neovim enables mouse mode by default
 set mouse=
 
-"------- ALE linter stuff thing
-" Set this setting in vimrc if you want to fix files automatically on save.
-" This is off by default.
-let g:ale_fix_on_save = 1
-" Put this in vimrc or a plugin file of your own.
-" After this is configured, :ALEFix will try and fix your JS code with ESLint.
-let g:ale_linters = {
-\   'svelte': ['eslint'],
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\   'python': ['flake8'],
-\   'ruby': ['rubocop'],
-\   'go': ['gobuild', 'govet'],
-\   'java': ['checkstyle', 'eclipselsp', 'javac', 'javalsp', 'pmd'],
-\ }
-let g:ale_fixers = {
-\   'svelte': ['eslint'],
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\   'python': ['autopep8'],
-\   'ruby': ['rubocop'],
-\   'go': ['gofmt', 'goimports', 'trim_whitespace', 'remove_trailing_lines'],
-\   'java': ['remove_trailing_lines', 'trim_whitespace', 'uncrustify'],
-\   'perl': ['perltidy', 'remove_trailing_lines', 'trim_whitespace'],
-\ }
-let g:ale_javascript_eslint_executable = 'eslint'
-let g:ale_javascript_eslint_use_global = 1
-let g:ale_javascript_prettier_eslint_executable = 'prettier-eslint'
-let g:ale_javascript_prettier_eslint_use_global = 1
-let g:ale_ruby_rubocop_executable = 'bundle'
-let g:ale_markdown_mdl_executable = expand("$HOME/bin/mdl")
-let g:ale_go_gobuild_options = '-tags integration'
-
 set background=light
 set background=dark
 "colorscheme candycode
@@ -587,9 +517,6 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -621,6 +548,7 @@ let g:coc_global_extensions = [
             \ 'coc-eslint',
             \ 'coc-go',
             \ 'coc-java',
+            \ 'coc-java-debug',
             \ 'coc-json',
             \ 'coc-markdownlint',
             \ 'coc-python',
@@ -629,5 +557,6 @@ let g:coc_global_extensions = [
             \ 'coc-solargraph',
             \ 'coc-stylelint',
             \ 'coc-tsserver',
-            \ 'coc-yaml'
+            \ 'coc-yaml',
+            \ 'coc-svelte',
             \]
