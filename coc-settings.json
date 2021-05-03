@@ -34,5 +34,8 @@
   "list.insertMappings": {
     "<C-c>": "do:exit"
   },
-  "typescript.format.semicolons": "insert"
+  "typescript.format.semicolons": "insert",
+  "cSpell.userWords": [
+    "adobo"
+  ]
 }
