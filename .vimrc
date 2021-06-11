@@ -36,6 +36,7 @@ Plug 'http://github.com/rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'rking/ag.vim'
 
 " Syntax Highlighting/Languages
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sheerun/vim-polyglot'
 
 Plug 'preservim/nerdcommenter'
