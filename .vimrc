@@ -556,7 +556,6 @@ let g:coc_global_extensions = [
             \ 'coc-rls',
             \ 'coc-sh',
             \ 'coc-solargraph',
-            \ 'coc-spell-checker',
             \ 'coc-stylelint',
             \ 'coc-svelte',
             \ 'coc-tsserver',
