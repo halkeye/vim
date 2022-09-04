@@ -11,6 +11,9 @@
       ]
     }
   },
+  "go.goplsOptions": {
+    "local": "do/"
+  },
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
   "solargraph.diagnostics": true,
