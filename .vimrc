@@ -26,23 +26,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
-" Test those things
-Plug 'janko-m/vim-test'
-
-" Lets try these out
-Plug 'http://github.com/rstacruz/sparkup', {'rtp': 'vim/'}
-
 " Old ones
 Plug 'rking/ag.vim'
 
 " Syntax Highlighting/Languages
-let g:polyglot_disabled = ['go']
+let g:polyglot_disabled = ['go', 'md', 'markdown']
 Plug 'sheerun/vim-polyglot'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+" Plug 'lepture/vim-jinja'
 Plug 'Yggdroot/indentLine'
-
-Plug 'preservim/nerdcommenter'
-
-
+Plug 'tpope/vim-commentary'
 Plug 'kien/rainbow_parentheses.vim'
 " :RainbowParenthesesToggle
 
@@ -51,8 +44,6 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 
 " GIT SUPPORT
 Plug 'tpope/vim-fugitive'
-
-Plug 'airblade/vim-gitgutter'
 
 " Color Schemes
 Plug 'altercation/vim-colors-solarized'
@@ -66,21 +57,13 @@ Plug 'NLKNguyen/papercolor-theme'
 "Plug 'itchyny/lightline.vim'
 
 " Other
-Plug 'vim-scripts/Rename'
+Plug 'tpope/vim-eunuch'
+Plug 'preservim/nerdtree'
 Plug 'skwp/vim-html-escape'
-" :Rename
-"Plug 'rename.vim'
-Plug 'taq/vim-git-branch-info'
 Plug 'tmhedberg/matchit'
-Plug 'tpope/vim-unimpaired'
-"Plug 'ervandew/supertab'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'editorconfig/editorconfig-vim'
-"Plug 'mklabs/vim-issues'
-Plug 'vim-scripts/gitdiff.vim'
 Plug 'vim-scripts/bufexplorer.zip'
-" Plug 'minibufexpl.vim'
-
 Plug 'godlygeek/csapprox'
 
 filetype plugin indent on                   " required!
@@ -93,15 +76,12 @@ autocmd! bufwritepost .vimrc source %
 
 " File types
 autocmd BufNewFile,BufRead *.gradle setf groovy
-
-" Old Config Starts here
-let g:Perl_PerlTags        = 'enabled'
+autocmd BufNewFile,BufRead *.njk setf htmldjango
 
 " Remember what line number
 if has('vim')
   set viminfo='10,\"100,:20,%,n~/.viminfo
 end
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endi
 
 "	because we prefer terse error messages,
 set terse
@@ -114,17 +94,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" Auto indent after a {
-"set autoindent
-"set smartindent
-
 " Linewidth to endless
 set textwidth=0
 
-
-" The completion dictionary is provided by Rasmus:
-" http://lerdorf.com/funclist.txt
-set dictionary-=~/symvimny/funclist.txt dictionary+=~/symvimny/funclist.txt
 " Use the dictionary completion
 set complete-=k complete+=k
 
@@ -134,13 +106,6 @@ set ruler                       " show line and column information-
 set showmatch                   " show matching brackets
 set formatoptions=tcqor
 set whichwrap=b,s,<,>,[,]       " cursors will now wrap
-
-" Toggle Numbers
-map <F12> :set number!<CR>
-" Paste
-"map <F11> :set paste!<bar>set paste?<CR>
-" Wrap
-"map <F10> :set wrap!<bar>set wrap?<CR>
 
 map [ cprev<CR>
 map ] cnext<CR>
@@ -190,6 +155,7 @@ cnoremap <C-K>    <C-U>
 " I hate folds
 set nofoldenable
 let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_conceal = 0
 
 """"""""""""""""""""""""""""""
 " Indent
@@ -226,20 +192,6 @@ function! GetVisual() range
     let &clipboard = cb_save
     return selection
 endfunction
-
-"vmap <leader>d :%s/<c-r>=GetVisual()<cr>/Data::Dumper::Dumper(\1)/
-vnoremap <leader>dd "hy:%s/<C-r>h/Data::Dumper::Dumper(<C-r>h)/<CR>
-nnoremap <leader>f ma[[k"xyy`a:echo @x<CR>
-
-
-""""""""
-"""" Shortcuts
-""""""""
-nnoremap <silent> `2 :TlistToggle<CR>
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 
 """ Tab stuff
 "Tab configuration
@@ -304,15 +256,6 @@ colorscheme PaperColor
 
 set cursorline
 
-"---------- vim-test
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-
-"let test#strategy = "tmux"
-
 " ctrl+p triggering fzf pls
 nmap <C-P> :FZF<CR>
 let g:fzf_action = {
@@ -363,10 +306,10 @@ vmap <C-ScrollWheelRight> <nop>
 
 " Copy vscode/ideajs/etc mapping for toggling comment
 let g:NERDDefaultAlign = 'left'
-nmap <C-_>   <Plug>NERDCommenterToggle
-vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
-nmap <C-/>   <Plug>NERDCommenterToggle
-vmap <C-/>   <Plug>NERDCommenterToggle<CR>gv
+nnoremap <C-_>   <Plug>Commentary
+vnoremap <C-_>   <Plug>Commentary<CR>gv
+nnoremap <C-/>   <Plug>Commentary
+vnoremap <C-/>   <Plug>Commentary<CR>gv
 
 set guicursor=
 " Workaround some broken plugins which set guicursor indiscriminately.
@@ -380,8 +323,6 @@ if ! has('gui_running')
     au InsertLeave * set timeoutlen=1000
   augroup END
 endif
-
-
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -402,14 +343,30 @@ else
   set signcolumn=yes
 endif
 
+"let g:go_metalinter_command = "golangci-lint"
+"let g:go_metalinter_enabled = []
+"let g:go_metalinter_autosave_enabled = []
+
+" run go imports on file save
+let g:go_gopls_local = "do"
+let g:go_fmt_command = "gopls"
+"let g:go_gopls_gofumpt=1
+
+let g:go_build_tags = 'integration'
+
+" automatically highlight variable your cursor is on
+let g:go_auto_sameids = 0
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-"inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
 " remap for complete to use tab and <cr>
@@ -419,7 +376,6 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
-
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -551,7 +507,6 @@ set tagfunc=CocTagFunc
 let g:coc_global_extensions = [
             \ 'coc-css',
             \ 'coc-eslint',
-            \ 'coc-go',
             \ 'coc-java',
             \ 'coc-java-debug',
             \ 'coc-json',
@@ -564,4 +519,7 @@ let g:coc_global_extensions = [
             \ 'coc-svelte',
             \ 'coc-tsserver',
             \ 'coc-yaml',
+            \ '@yaegassy/coc-tailwindcss3',
             \]
+
+  au FileType html let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs']

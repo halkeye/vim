@@ -41,5 +41,6 @@
   "list.insertMappings": {
     "<C-c>": "do:exit"
   },
-  "typescript.format.semicolons": "insert"
+  "typescript.format.semicolons": "insert",
+  "svelte.enable-ts-plugin": false
 }
